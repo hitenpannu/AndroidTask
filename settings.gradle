@@ -2,4 +2,8 @@ rootProject.name='TaskApp'
 include ':app'
 
 include ':feature-user-list:feature-user-list-data-network',
-        ':feature-user-list:feature-user-list-entity'
+        ':feature-user-list:feature-user-list-entity',
+        ':feature-user-list:feature-user-list-domain'
+
+include ':common-Utils'
+include ':feature-user-list:feature-user-list-ui'

@@ -1,0 +1,32 @@
+ext {
+    final def junitVersion = "4.12"
+    final def mockitoCoreVersion = "3.0.0"
+    final def retrofitVersion = "2.8.1"
+    final def daggerVersion = "2.26"
+
+    testDependencies = [
+            junit      : "junit:junit:${junitVersion}",
+            junitExt   : 'androidx.test.ext:junit:1.1.1',
+            mockitoCore: "org.mockito:mockito-core:${mockitoCoreVersion}",
+
+            espresso   : 'androidx.test.espresso:espresso-core:3.2.0',
+            archTesting: "android.arch.core:core-testing:1.1.1"
+    ]
+
+    networkDependencies = [
+            retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+    ]
+
+    androidx = [
+            appCompat: 'androidx.appcompat:appcompat:1.1.0',
+            coreKtx  : 'androidx.core:core-ktx:1.2.0',
+            archCore: "androidx.arch.core:core-common:2.1.0",
+            lifeCycleExtention: 'android.arch.lifecycle:extensions:1.1.1',
+    ]
+
+    dagger = [
+            core     : "com.google.dagger:dagger:${daggerVersion}",
+            processor: "com.google.dagger:dagger-compiler:${daggerVersion}"
+    ]
+}

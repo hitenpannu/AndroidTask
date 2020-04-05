@@ -4,23 +4,21 @@ import com.hitenderpannu.userListDataNetwork.entity.NetworkUser
 import com.hitenderpannu.userlist.entity.User
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
-import org.junit.Assert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane
 
 @RunWith(MockitoJUnitRunner::class)
-class UserListRepoTest {
+class UserListRemoteRepoTest {
 
     @Mock
     lateinit var userListApi: UserListApi;
 
     @InjectMocks
-    private lateinit var userListRepo: UserListRepoImpl
+    private lateinit var userListRepo: UserListRemoteRepoImpl
 
     @Test
     fun `return user list from api`() {
