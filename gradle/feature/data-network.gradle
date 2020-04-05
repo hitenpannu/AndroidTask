@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply from: "../../gradle/feature/libraries.gradle";
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation networkDependencies.retrofit
+
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockitoCore
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

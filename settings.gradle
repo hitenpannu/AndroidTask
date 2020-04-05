@@ -1,0 +1,5 @@
+rootProject.name='TaskApp'
+include ':app'
+
+include ':feature-user-list:feature-user-list-data-network',
+        ':feature-user-list:feature-user-list-entity'
