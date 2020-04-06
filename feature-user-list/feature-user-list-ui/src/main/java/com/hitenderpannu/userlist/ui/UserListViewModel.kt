@@ -9,9 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UserListViewModel(
-    private val userListInteractor: UserListInteractor
-) : ViewModel() {
+class UserListViewModel : ViewModel() {
+
+    lateinit var userListInteractor: UserListInteractor
 
     private val mutableUserList = MutableLiveData<List<User>>()
     private val mutableError = MutableLiveData<Throwable>()

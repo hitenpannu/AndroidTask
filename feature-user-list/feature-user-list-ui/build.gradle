@@ -7,4 +7,6 @@ dependencies {
     implementation project(":feature-user-list:feature-user-list-entity")
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
+    implementation androidx.recyclerView
+    implementation androidx.material
 }

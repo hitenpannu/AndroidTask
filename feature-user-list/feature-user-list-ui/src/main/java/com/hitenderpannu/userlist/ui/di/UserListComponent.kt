@@ -13,6 +13,7 @@ interface UserListComponent {
 
     @Subcomponent.Builder
     interface Builder {
+        fun plus(module: UserListModule): Builder
         fun build(): UserListComponent
     }
 }

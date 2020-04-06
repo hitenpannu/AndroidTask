@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "'https://task-app-hiten.herokuapp.com/'")
+        buildConfigField("String", "BASE_URL", '"https://task-app-hiten.herokuapp.com/"')
     }
 
     buildTypes {
@@ -44,6 +44,9 @@ dependencies {
 
     implementation project(":common-Utils")
     implementation project(":feature-user-list:feature-user-list-ui")
+    implementation project(":feature-user-list:feature-user-list-domain")
+    implementation project(":feature-user-list:feature-user-list-data-network")
+    implementation project(":feature-user-list:feature-user-list-entity")
 
     implementation dagger.core
     kapt dagger.processor
