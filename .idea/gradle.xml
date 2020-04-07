@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common-Utils" />
+            <option value="$PROJECT_DIR$/feature-auth" />
+            <option value="$PROJECT_DIR$/feature-auth/feature-auth-ui" />
             <option value="$PROJECT_DIR$/feature-user-list" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-data-network" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-domain" />
