@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TaskApp</string>
     <string name="title_feature_task">Task Feature</string>
+    <string name="title_feature_task_ui">Task</string>
 </resources>
