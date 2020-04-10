@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -10,9 +11,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/common-Utils" />
             <option value="$PROJECT_DIR$/feature-auth" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-ui" />
+            <option value="$PROJECT_DIR$/feature-task" />
+            <option value="$PROJECT_DIR$/feature-task/feature-task-data-network" />
+            <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />
+            <option value="$PROJECT_DIR$/feature-task/feature-task-ui" />
             <option value="$PROJECT_DIR$/feature-user-list" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-data-network" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-domain" />

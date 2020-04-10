@@ -1,19 +1,14 @@
 package com.hitenderpannu.userlist.ui.di
 
-import com.hitenderpannu.userlist.ui.UserListFragment
-import dagger.Subcomponent
+import com.hitenderpannu.base.di.CoreComponent
+import com.hitenderpannu.userlist.ui.UserListActivity
+import dagger.Component
 
 @FeatureScope
-@Subcomponent(
-    modules = [UserListModule::class]
+@Component(
+    modules = [UserListModule::class],
+    dependencies = [CoreComponent::class]
 )
 interface UserListComponent {
-
-    fun inject(fragment: UserListFragment)
-
-    @Subcomponent.Builder
-    interface Builder {
-        fun plus(module: UserListModule): Builder
-        fun build(): UserListComponent
-    }
+    fun inject(activity: UserListActivity)
 }

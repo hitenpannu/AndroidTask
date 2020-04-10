@@ -8,14 +8,14 @@ import com.hitenderpannu.userListDataNetwork.UserListRemoteRepoImpl
 import com.hitenderpannu.userlist.domain.UserListInteractor
 import com.hitenderpannu.userlist.domain.UserListInteractorImpl
 import com.hitenderpannu.userlist.ui.UserListAdapter
-import com.hitenderpannu.userlist.ui.UserListFragment
+import com.hitenderpannu.userlist.ui.UserListActivity
 import com.hitenderpannu.userlist.ui.UserListViewModel
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-class UserListModule(private val userListFragment: UserListFragment) {
+class UserListModule(private val userListActivity: UserListActivity) {
 
     @FeatureScope
     @Provides
@@ -39,7 +39,7 @@ class UserListModule(private val userListFragment: UserListFragment) {
     @FeatureScope
     @Provides
     fun provideUserListViewModel(userListInteractor: UserListInteractor): UserListViewModel {
-        val viewModel = ViewModelProviders.of(userListFragment).get(UserListViewModel::class.java)
+        val viewModel = ViewModelProviders.of(userListActivity).get(UserListViewModel::class.java)
         viewModel.userListInteractor = userListInteractor
         return viewModel
     }

@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hitenderpannu.userlist.ui" />
+    package="com.hitenderpannu.userlist.ui">
+
+    <application>
+        <activity android:name=".UserListActivity">
+        </activity>
+    </application>
+</manifest>

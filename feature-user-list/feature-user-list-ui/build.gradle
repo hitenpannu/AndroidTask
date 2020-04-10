@@ -1,6 +1,7 @@
 apply from: "../../gradle/feature/ui.gradle";
 
 dependencies {
+    implementation project(":base")
     implementation project(":common-Utils")
     implementation project(":feature-user-list:feature-user-list-domain")
     implementation project(":feature-user-list:feature-user-list-data-network")

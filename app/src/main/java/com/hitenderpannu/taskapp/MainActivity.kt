@@ -1,9 +1,9 @@
 package com.hitenderpannu.taskapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.hitenderpannu.auth.ui.AuthFragmentDummy
-import com.hitenderpannu.userlist.ui.UserListFragment
+import com.hitenderpannu.userlist.ui.UserListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,9 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.cotainer, AuthFragmentDummy())
-            .commit()
+        startActivity(Intent(this, UserListActivity::class.java))
     }
 }
