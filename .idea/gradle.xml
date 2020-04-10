@@ -18,7 +18,7 @@
             <option value="$PROJECT_DIR$/feature-task" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-data-network" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />
-            <option value="$PROJECT_DIR$/feature-task/feature-task-ui" />
+            <option value="$PROJECT_DIR$/feature-task/feature_task_ui" />
             <option value="$PROJECT_DIR$/feature-user-list" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-data-network" />
             <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-domain" />

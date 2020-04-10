@@ -9,7 +9,7 @@ include ':feature-user-list:feature-user-list-data-network',
 include ':common-Utils'
 include ':feature-auth:feature-auth-ui'
 
-include ':feature-task:feature-task-ui',
+include ':feature-task:feature_task_ui',
         ':feature-task:feature-task-data-network',
         ':feature-task:feature-task-domain'
 

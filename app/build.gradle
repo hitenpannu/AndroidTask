@@ -28,7 +28,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-    dynamicFeatures = [":feature-task:feature-task-ui"]
+    dynamicFeatures = [":feature-task:feature_task_ui"]
     viewBinding {
         enabled = true
     }

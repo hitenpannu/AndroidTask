@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startDownloadingTaskFeature() {
-        val moduleToInstall = ":feature-task:feature-task-ui"
+        val moduleToInstall = ":feature-task:feature_task_ui"
 
         if (manager.installedModules.contains(moduleToInstall)) {
             binding?.btnLaunchTask?.isEnabled = true
