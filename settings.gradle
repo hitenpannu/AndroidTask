@@ -7,10 +7,16 @@ include ':feature-user-list:feature-user-list-data-network',
         ':feature-user-list:feature-user-list-ui'
 
 include ':common-Utils'
-include ':feature-auth:feature-auth-ui'
+
+include ':feature-auth:feature-auth-ui',
+        ":feature-auth:feature-auth-data-network",
+        ":feature-auth:feature-auth-entity",
+        ":feature-auth:feature-auth-domain"
 
 include ':feature-task:feature_task_ui',
+        ':feature-task:feature-task-entity',
         ':feature-task:feature-task-data-network',
         ':feature-task:feature-task-domain'
 
 include ':base'
+include ':common-entity'

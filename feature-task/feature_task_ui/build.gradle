@@ -1,6 +1,7 @@
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: "../../libraries.gradle";
 
 android {
     compileSdkVersion 29
@@ -21,7 +22,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":base")
     implementation project(':app')
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
+    implementation androidx.recyclerView
+    implementation androidx.material
     implementation 'com.google.android.play:core:1.6.4'
 }

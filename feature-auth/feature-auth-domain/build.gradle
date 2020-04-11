@@ -1,0 +1,8 @@
+apply from: "../../gradle/feature/repo.gradle"
+
+
+dependencies {
+    implementation project(":common-Utils")
+    implementation project(":feature-auth:feature-auth-data-network")
+    implementation project(":feature-auth:feature-auth-entity")
+}

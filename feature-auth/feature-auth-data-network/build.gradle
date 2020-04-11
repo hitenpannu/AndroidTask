@@ -1,0 +1,6 @@
+apply from: "../../gradle/feature/data-network.gradle";
+
+dependencies {
+    implementation project(":feature-auth:feature-auth-entity")
+    implementation project(":common-entity")
+}
