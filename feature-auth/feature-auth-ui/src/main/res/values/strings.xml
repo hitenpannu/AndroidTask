@@ -8,4 +8,18 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="label_welcome_back">Welcome Back</string>
+    <string name="label_lets_get_started">Let\'s get started</string>
+
+    <string name="hint_enter_name">Enter your name</string>
+    <string name="hint_enter_email">Enter your email</string>
+    <string name="hint_enter_password">Enter your password</string>
+    <string name="hint_enter_confirm_password">Enter your password again</string>
+
+    <string name="action_login">Login</string>
+    <string name="action_signup">Login</string>
+
+    <string name="action_already_have_account">Already have an account? Login</string>
+    <string name="do_not_have_account">Do not have account? Sign up</string>
 </resources>

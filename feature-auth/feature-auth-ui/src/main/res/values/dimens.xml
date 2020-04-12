@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="size64">64dp</dimen>
+    <dimen name="text24">24sp</dimen>
+    <dimen name="size16">16dp</dimen>
+    <dimen name="size8">8dp</dimen>
 </resources>

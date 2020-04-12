@@ -1,5 +1,11 @@
 apply from: "../../gradle/feature/ui.gradle"
 
+android{
+    viewBinding {
+        enabled = true
+    }
+}
+
 dependencies {
     implementation project(":base")
     implementation project(":common-Utils")
