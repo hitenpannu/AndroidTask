@@ -3,6 +3,7 @@ package com.hitenderpannu.auth.domain.signup
 import com.hitenderpannu.auth.data.network.AuthRepo
 import com.hitenderpannu.auth.domain.errors.ConfirmPaswdDoestNotMatch
 import com.hitenderpannu.auth.entity.User
+import com.hitenderpannu.common.domain.UserPreferences
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.common.utils.NoInternetConnection
 import kotlinx.coroutines.runBlocking
@@ -20,6 +21,9 @@ class SignUpInteractorImplTest {
 
     @Mock
     lateinit var authRepo: AuthRepo
+
+    @Mock
+    lateinit var userPreferences: UserPreferences
 
     @Mock
     lateinit var networkConnectionChecker: NetworkConnectionChecker
@@ -57,7 +61,13 @@ class SignUpInteractorImplTest {
             val mockedUser = User("id","name", "email", "token")
             Mockito.`when`(authRepo.signup("name","email", "password")).thenReturn(mockedUser)
             val response = signUpInteractorImpl.signUp("name", "email", "password", "password")
+
             assertEquals(response, mockedUser)
+
+            Mockito.verify(userPreferences).userId = "id"
+            Mockito.verify(userPreferences).userName = "name"
+            Mockito.verify(userPreferences).userEmail = "email"
+            Mockito.verify(userPreferences).userToken = "token"
         }
     }
 }

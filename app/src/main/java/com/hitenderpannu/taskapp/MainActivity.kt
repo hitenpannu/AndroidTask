@@ -10,9 +10,13 @@ import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import com.hitenderpannu.base.BuildConfig
 import com.hitenderpannu.taskapp.databinding.ActivityMainBinding
-import com.hitenderpannu.userlist.ui.UserListActivity
+import com.hitenderpannu.taskapp.di.DaggerManager
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var viewModel: MainActivityViewModel
 
     private var binding: ActivityMainBinding? = null
 
@@ -23,11 +27,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        DaggerManager.inject(this)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        binding?.btnLaunchUserList?.setOnClickListener {
-            startActivity(Intent(this, UserListActivity::class.java))
-        }
         binding?.btnDownloadTaskFeature?.setOnClickListener {
             startDownloadingTaskFeature()
         }

@@ -3,9 +3,9 @@ apply from: "../../gradle/feature/ui.gradle"
 dependencies {
     implementation project(":base")
     implementation project(":common-Utils")
-    implementation project(":feature-user-list:feature-user-list-domain")
-    implementation project(":feature-user-list:feature-user-list-data-network")
-    implementation project(":feature-user-list:feature-user-list-entity")
+    implementation project(":feature-auth:feature-auth-data-network")
+    implementation project(":feature-auth:feature-auth-domain")
+    implementation project( ":feature-auth:feature-auth-entity")
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
     implementation androidx.recyclerView

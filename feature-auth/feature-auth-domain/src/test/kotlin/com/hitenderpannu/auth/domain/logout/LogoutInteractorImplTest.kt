@@ -1,6 +1,7 @@
 package com.hitenderpannu.auth.domain.logout
 
 import com.hitenderpannu.auth.data.network.AuthRepo
+import com.hitenderpannu.common.domain.UserPreferences
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.common.utils.NoInternetConnection
 import kotlinx.coroutines.runBlocking
@@ -17,6 +18,9 @@ class LogoutInteractorImplTest {
 
     @Mock
     lateinit var authRepo: AuthRepo
+
+    @Mock
+    lateinit var userPreferences: UserPreferences
 
     @Mock
     lateinit var networkConnectionChecker: NetworkConnectionChecker
@@ -46,6 +50,10 @@ class LogoutInteractorImplTest {
             logoutInteractorImpl.logout()
 
             Mockito.verify(authRepo).logout()
+            Mockito.verify(userPreferences).userId = null
+            Mockito.verify(userPreferences).userName = null
+            Mockito.verify(userPreferences).userEmail = null
+            Mockito.verify(userPreferences).userToken = null
         }
     }
 }

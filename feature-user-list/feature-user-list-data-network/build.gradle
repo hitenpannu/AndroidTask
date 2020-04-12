@@ -1,5 +1,0 @@
-apply from: "../../gradle/feature/data-network.gradle";
-
-dependencies {
-    implementation project(":feature-user-list:feature-user-list-entity")
-}

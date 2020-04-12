@@ -3,6 +3,8 @@ package com.hitenderpannu.base.di
 import com.hitenderpannu.base.BuildConfig
 import com.hitenderpannu.base.MainApplication
 import com.hitenderpannu.base.network.ConnectionManagerFactory
+import com.hitenderpannu.common.domain.UserPreferences
+import com.hitenderpannu.base.user.UserPreferencesImpl
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import dagger.Module
 import dagger.Provides
@@ -28,5 +30,11 @@ class CoreModule(private val application: MainApplication) {
                 return manager.isConnected()
             }
         }
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserPreferences(): com.hitenderpannu.common.domain.UserPreferences {
+        return UserPreferencesImpl(application);
     }
 }

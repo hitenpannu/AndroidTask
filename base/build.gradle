@@ -46,6 +46,7 @@ dependencies {
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitConverter
 
+    implementation project(':common-domain')
     implementation project(":common-Utils")
 
     testImplementation 'junit:junit:4.12'

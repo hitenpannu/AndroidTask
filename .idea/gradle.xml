@@ -13,8 +13,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/common-Utils" />
+            <option value="$PROJECT_DIR$/common-domain" />
             <option value="$PROJECT_DIR$/common-entity" />
             <option value="$PROJECT_DIR$/feature-auth" />
+            <option value="$PROJECT_DIR$/feature-auth/feature-auth-data-local" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-data-network" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-domain" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-entity" />
@@ -24,11 +26,6 @@
             <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-entity" />
             <option value="$PROJECT_DIR$/feature-task/feature_task_ui" />
-            <option value="$PROJECT_DIR$/feature-user-list" />
-            <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-data-network" />
-            <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-domain" />
-            <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-entity" />
-            <option value="$PROJECT_DIR$/feature-user-list/feature-user-list-ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

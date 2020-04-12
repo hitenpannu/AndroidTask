@@ -4,6 +4,7 @@ import com.hitenderpannu.auth.data.network.AuthRepo
 import com.hitenderpannu.auth.data.network.entity.NetworkUser
 import com.hitenderpannu.auth.data.network.entity.SignupResponse
 import com.hitenderpannu.auth.entity.User
+import com.hitenderpannu.common.domain.UserPreferences
 import com.hitenderpannu.common.entity.NetworkResponse
 import com.hitenderpannu.common.entity.Status
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
@@ -26,6 +27,9 @@ class LoginInteractorImplTest {
     @Mock
     lateinit var authRepo: AuthRepo
 
+    @Mock
+    lateinit var userPreferences: UserPreferences
+
     @InjectMocks
     lateinit var loginInteractorImpl: LoginInteractorImpl
 
@@ -46,12 +50,18 @@ class LoginInteractorImplTest {
     fun `return user from auth repo`() {
         runBlocking {
             Mockito.`when`(networkConnectionChecker.isConnected()).thenReturn(true)
+
             val mockedUser = User("id", "name", "email","token")
             Mockito.`when`(authRepo.login("email", "12345678")).thenReturn(mockedUser)
 
             val response = loginInteractorImpl.login("email", "12345678")
 
             Mockito.verify(authRepo).login("email", "12345678")
+
+            Mockito.verify(userPreferences).userId =  "id"
+            Mockito.verify(userPreferences).userName = "name"
+            Mockito.verify(userPreferences).userEmail = "email"
+            Mockito.verify(userPreferences).userToken = "token"
 
             Assert.assertEquals(response, mockedUser)
         }
