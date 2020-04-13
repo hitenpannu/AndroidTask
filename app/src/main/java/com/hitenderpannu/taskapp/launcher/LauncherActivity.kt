@@ -1,4 +1,4 @@
-package com.hitenderpannu.taskapp
+package com.hitenderpannu.taskapp.launcher
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,15 +8,16 @@ import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.hitenderpannu.auth.ui.AuthRouter
 import com.hitenderpannu.base.BuildConfig
 import com.hitenderpannu.taskapp.databinding.ActivityMainBinding
 import com.hitenderpannu.taskapp.di.DaggerManager
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class LauncherActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var viewModel: MainActivityViewModel
+    lateinit var viewModel: LauncherViewModel
 
     private var binding: ActivityMainBinding? = null
 
@@ -26,10 +27,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         DaggerManager.inject(this)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
         binding?.btnDownloadTaskFeature?.setOnClickListener {
             startDownloadingTaskFeature()
@@ -64,6 +65,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            AuthRouter.REQUEST_AUTHENTICATION -> viewModel.checkIfUserIsLoggedIn()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onDestroy() {

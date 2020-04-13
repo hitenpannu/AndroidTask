@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.hitenderpannu.auth.ui.AuthRouter
 import com.hitenderpannu.common.domain.UserPreferences
-import com.hitenderpannu.taskapp.MainActivityViewModel
+import com.hitenderpannu.taskapp.home.HomeRouter
+import com.hitenderpannu.taskapp.launcher.LauncherViewModel
 import dagger.Module
 import dagger.Provides
 
@@ -17,12 +18,17 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @ActivityScope
     @Provides
-    fun provideViewModelFactory(userPreferences: UserPreferences, authRouter: AuthRouter) = CustomViewModelFactory(userPreferences, authRouter)
+    fun provideHomeRouter() = HomeRouter(activity)
+
+    @ActivityScope
+    @Provides
+    fun provideViewModelFactory(userPreferences: UserPreferences, authRouter: AuthRouter, homeRouter: HomeRouter) =
+        CustomViewModelFactory(userPreferences, authRouter, homeRouter)
 
     @Provides
     fun provideMainActivityViewModel(
         viewModelFactory: CustomViewModelFactory
-    ): MainActivityViewModel {
-        return ViewModelProviders.of(activity, viewModelFactory).get(MainActivityViewModel::class.java)
+    ): LauncherViewModel {
+        return ViewModelProviders.of(activity, viewModelFactory).get(LauncherViewModel::class.java)
     }
 }

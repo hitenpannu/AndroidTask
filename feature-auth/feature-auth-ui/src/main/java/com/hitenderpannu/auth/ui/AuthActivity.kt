@@ -18,9 +18,7 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-
         DaggerManager.inject(this)
-
         authViewModel.isAuthenticationDone.observe(this, userObserver)
     }
 

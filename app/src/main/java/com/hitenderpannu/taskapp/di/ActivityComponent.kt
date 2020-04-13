@@ -1,7 +1,8 @@
 package com.hitenderpannu.taskapp.di
 
 import com.hitenderpannu.base.di.CoreComponent
-import com.hitenderpannu.taskapp.MainActivity
+import com.hitenderpannu.taskapp.home.HomeActivity
+import com.hitenderpannu.taskapp.launcher.LauncherActivity
 import dagger.Component
 
 @ActivityScope
@@ -11,5 +12,7 @@ import dagger.Component
 )
 interface ActivityComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(launcherActivity: LauncherActivity)
+
+    fun inject(homeActivity: HomeActivity)
 }
