@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.hitenderpannu.auth.ui.LoginFragment"
+        android:name="com.hitenderpannu.auth.ui.login.LoginFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_login">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.hitenderpannu.auth.ui.SignupFragment"
+        android:name="com.hitenderpannu.auth.ui.signup.SignupFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_signup">
 

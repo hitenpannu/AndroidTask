@@ -3,7 +3,7 @@ package com.hitenderpannu.base.user
 import android.content.Context
 import com.hitenderpannu.common.domain.UserPreferences
 
-internal class UserPreferencesImpl(private val context: Context) : UserPreferences {
+class UserPreferencesImpl(private val context: Context) : UserPreferences {
 
     companion object {
         private const val USER_PREFERENCES_FILE = "userPreferences"

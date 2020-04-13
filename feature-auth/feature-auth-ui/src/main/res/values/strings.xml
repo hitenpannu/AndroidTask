@@ -18,7 +18,7 @@
     <string name="hint_enter_confirm_password">Enter your password again</string>
 
     <string name="action_login">Login</string>
-    <string name="action_signup">Login</string>
+    <string name="action_signup">SignUp</string>
 
     <string name="action_already_have_account">Already have an account? Login</string>
     <string name="do_not_have_account">Do not have account? Sign up</string>
