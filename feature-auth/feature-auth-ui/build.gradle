@@ -1,13 +1,9 @@
 apply from: "../../gradle/feature/ui.gradle"
 
 android {
-    dataBinding {
-        enabled true
-    }
     viewBinding {
         enabled = true
     }
-
 }
 
 dependencies {

@@ -1,11 +1,11 @@
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply from: "../../libraries.gradle";
 
 android {
     compileSdkVersion 29
-
 
     defaultConfig {
         minSdkVersion 21
@@ -18,15 +18,32 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+    viewBinding{
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":base")
     implementation project(':app')
+    implementation project(":common-Utils")
+    implementation project(":common-domain")
+    implementation project(":feature-task:feature-task-data-network")
+    implementation project(":feature-task:feature-task-domain")
+    implementation project(':feature-task:feature-task-entity')
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
     implementation androidx.recyclerView
     implementation androidx.material
+    implementation androidx.coreKtx
+    implementation androidx.lifeCycleExtention
+
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.retrofitConverter
+
+    implementation dagger.core
+    kapt dagger.processor
+
     implementation 'com.google.android.play:core:1.6.4'
 }
