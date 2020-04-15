@@ -8,18 +8,12 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hitenderpannu.auth.domain.signup.SignUpInteractor
 import com.hitenderpannu.auth.entity.User
+import com.hitenderpannu.common.utils.isEmailValid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.regex.Pattern
 
 class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : ViewModel() {
-
-    companion object {
-        private const val EMAIL_REGEX = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})\$"
-    }
-
-    private val emailPattern by lazy { Pattern.compile(EMAIL_REGEX) }
 
     private val userName = MutableLiveData<String>()
     private val email = MutableLiveData<String>()
@@ -58,7 +52,7 @@ class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : 
 
     private fun validateEmail(email: String?): String? {
         return if (email.isNullOrBlank()) "Please enter email"
-        else if (!emailPattern.matcher(email).matches()) "Please enter valid email" else null
+        else if (!isEmailValid(email)) "Please enter valid email" else null
     }
 
     private fun validatePassword(password: String): String? {

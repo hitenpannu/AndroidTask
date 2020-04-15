@@ -69,30 +69,38 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/loginProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateBehavior="repeat"
+        android:visibility="gone" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/action_login"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAllCaps="false"
         android:layout_marginTop="@dimen/size16"
-        />
+        android:enabled="false"
+        android:text="@string/action_login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonMoveToSignUp"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/do_not_have_account"
         android:layout_marginTop="@dimen/size16"
         android:paddingTop="@dimen/size8"
-        android:paddingBottom="@dimen/size8"
         android:paddingRight="@dimen/size8"
-        android:textAllCaps="false"
-        />
+        android:paddingBottom="@dimen/size8"
+        android:text="@string/do_not_have_account"
+        android:textAllCaps="false" />
 
     <Space
         android:layout_width="0dp"

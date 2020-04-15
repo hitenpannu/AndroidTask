@@ -37,7 +37,7 @@ class LauncherActivity : AppCompatActivity() {
         }
         binding?.btnLaunchTask?.setOnClickListener {
             val intent = Intent()
-            intent.setClassName(BuildConfig.APPLICATION_ID, "com.hitenderpannu.task.ui.TaskActivity")
+            intent.setClassName("com.hitenderpannu.taskapp", "com.hitenderpannu.task.ui.TaskActivity")
             startActivity(intent)
         }
     }

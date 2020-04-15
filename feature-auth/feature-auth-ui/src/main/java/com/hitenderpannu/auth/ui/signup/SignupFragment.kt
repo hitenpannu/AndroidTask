@@ -48,7 +48,7 @@ class SignupFragment : Fragment() {
 
         startObservingFieldsForTextChanges()
         attachErrorLiveDataWithFields()
-
+        viewModel.userLiveData().observe(this, userObserver)
         binding?.buttonSignup?.setOnClickListener { viewModel.startSignUp() }
         binding?.buttonMoveToLogin?.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)

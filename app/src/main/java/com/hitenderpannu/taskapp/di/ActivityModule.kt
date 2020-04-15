@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.hitenderpannu.auth.ui.AuthRouter
 import com.hitenderpannu.common.domain.UserPreferences
+import com.hitenderpannu.taskapp.DynamicFeatureManager
 import com.hitenderpannu.taskapp.home.HomeRouter
 import com.hitenderpannu.taskapp.launcher.LauncherViewModel
 import dagger.Module
@@ -22,8 +23,16 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @ActivityScope
     @Provides
-    fun provideViewModelFactory(userPreferences: UserPreferences, authRouter: AuthRouter, homeRouter: HomeRouter) =
-        CustomViewModelFactory(userPreferences, authRouter, homeRouter)
+    fun provideDynamicFeatureManager() = DynamicFeatureManager(activity)
+
+    @ActivityScope
+    @Provides
+    fun provideViewModelFactory(
+        userPreferences: UserPreferences,
+        authRouter: AuthRouter,
+        homeRouter: HomeRouter,
+        dynamicFeatureManager: DynamicFeatureManager) =
+        CustomViewModelFactory(userPreferences, authRouter, homeRouter, dynamicFeatureManager)
 
     @Provides
     fun provideMainActivityViewModel(

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -39,11 +40,16 @@ class TaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.taskListView?.layoutManager = LinearLayoutManager(context)
         binding?.taskListView?.adapter = taskListAdapter
+        binding?.taskInputText?.doAfterTextChanged { viewModel.updateNewTaskDescription(it.toString()) }
+        viewModel.liveTaskList().observe(this, listObserver)
+        viewModel.shouldEnableAddTask().observe(this, createTaskButtonObserver)
+        binding?.buttonAddTask?.setOnClickListener { viewModel.createTask() }
     }
 
     private val listObserver = Observer<List<Task>> {
         taskListAdapter.updateTaskList(it)
     }
+    private val createTaskButtonObserver = Observer<Boolean> { binding?.buttonAddTask?.isEnabled = it }
 
     private val progressObserver = Observer<Boolean> { show ->
         if (show) binding?.taskListProgress?.show() else binding?.taskListProgress?.hide()
@@ -55,6 +61,8 @@ class TaskFragment : Fragment() {
 
     override fun onDestroyView() {
         binding = null
+        viewModel.liveTaskList().removeObserver(listObserver)
+        viewModel.shouldEnableAddTask().removeObserver(createTaskButtonObserver)
         super.onDestroyView()
     }
 }
