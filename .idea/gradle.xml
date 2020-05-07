@@ -26,6 +26,8 @@
             <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-entity" />
             <option value="$PROJECT_DIR$/feature-task/feature_task_ui" />
+            <option value="$PROJECT_DIR$/feature-workout" />
+            <option value="$PROJECT_DIR$/feature-workout/feature-workout-ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

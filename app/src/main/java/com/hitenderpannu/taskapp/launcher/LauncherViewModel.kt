@@ -11,7 +11,7 @@ class LauncherViewModel(
     private val homeRouter: HomeRouter
 ) : ViewModel() {
     init {
-        checkIfUserIsLoggedIn()
+        //checkIfUserIsLoggedIn()
     }
 
     fun checkIfUserIsLoggedIn() {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layoutDescription="@xml/gender_selection_scene"
+    tools:context=".UserSetupActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gender_icon_padding"
+        android:background="@drawable/background_gender_unselected"
+        app:srcCompat="@drawable/ic_male"
+        app:tint="@color/blush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/icon_female"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gender_icon_padding"
+        android:background="@drawable/background_gender_unselected"
+        app:srcCompat="@drawable/ic_female"
+        app:tint="@color/blush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/icon_male"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please provide your age"
+        android:textSize="24sp"
+        android:layout_marginTop="36dp"
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/input_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:alpha="0"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="3"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:paddingStart="@dimen/age_input_padding"
+        android:paddingEnd="@dimen/age_input_padding"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/label_age"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+        android:id="@+id/input_age_underline"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@color/gunmetal"
+        android:alpha="0"
+        app:layout_constraintTop_toBottomOf="@+id/input_age"
+        app:layout_constraintLeft_toLeftOf="@+id/input_age"
+        app:layout_constraintRight_toRightOf="@+id/input_age"/>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

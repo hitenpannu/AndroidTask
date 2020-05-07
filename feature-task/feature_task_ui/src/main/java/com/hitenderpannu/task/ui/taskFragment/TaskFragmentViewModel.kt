@@ -21,7 +21,7 @@ class TaskFragmentViewModel(
 
     fun liveTaskList(): LiveData<List<Task>> = mutableTaskList
     fun liveProgress(): LiveData<Boolean> = mutableProgress
-    fun liveError(): LiveData<String> = mutableErro
+    fun liveError(): LiveData<String> = mutableError
     fun shouldEnableAddTask(): LiveData<Boolean> = Transformations.map(newTaskDescription) { it.isNotEmpty() }
 
     init {
@@ -30,7 +30,7 @@ class TaskFragmentViewModel(
 
     fun updateNewTaskDescription(newTask: String) = newTaskDescription.postValue(newTask)
 
-    fun getTaskList() {
+    private fun getTaskList() {
         CoroutineScope(Dispatchers.IO).launch {
             mutableProgress.postValue(true)
             try {
