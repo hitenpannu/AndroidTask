@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-        buildConfigField("String", "BASE_URL", '"https://task-app-hiten.herokuapp.com/"')
+        buildConfigField("String", "BASE_URL", '"https://byb-server.herokuapp.com/"')
     }
 
     buildTypes {
@@ -29,6 +29,9 @@ android {
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
@@ -46,6 +49,7 @@ dependencies {
 
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitConverter
+    implementation networkDependencies.retrofiLoggingInterceptor
 
     implementation project(':common-domain')
     implementation project(":common-Utils")

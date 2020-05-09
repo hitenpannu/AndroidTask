@@ -2,6 +2,7 @@ ext {
     final def junitVersion = "4.12"
     final def mockitoCoreVersion = "3.0.0"
     final def retrofitVersion = "2.8.1"
+    final def retrofitLogInterceptor = '4.2.1'
     final def daggerVersion = "2.26"
     final def navVersion = "2.3.0-alpha05"
 
@@ -17,6 +18,7 @@ ext {
     networkDependencies = [
             retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofiLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${retrofitLogInterceptor}"
     ]
 
     androidx = [

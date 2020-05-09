@@ -9,6 +9,7 @@ import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -27,11 +28,12 @@ class CoreModule(private val application: MainApplication) {
     @Provides
     fun provideOkHttpClient(userPreferences: UserPreferences): OkHttpClient {
         val builder = OkHttpClient.Builder()
+        builder.addInterceptor(HttpLoggingInterceptor().apply { this.level = HttpLoggingInterceptor.Level.BODY })
         builder.addInterceptor { chain ->
             val originalRequest = chain.request()
             val modifiedRequest = originalRequest.newBuilder()
                 .header("token", userPreferences.userToken ?: "")
-                .method(originalRequest.method(), originalRequest.body())
+                .method(originalRequest.method, originalRequest.body)
                 .build()
             chain.proceed(modifiedRequest)
         }

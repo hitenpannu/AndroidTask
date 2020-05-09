@@ -133,7 +133,7 @@ class AuthFragment : Fragment() {
 
     private val loginProgressObserver = Observer<Boolean> { show ->
         if (show) binding?.progress?.show() else binding?.progress?.hide()
-        binding?.authButton?.visibility = if(show) View.VISIBLE else View.INVISIBLE
+        binding?.authButton?.visibility = if(!show) View.VISIBLE else View.INVISIBLE
         binding?.counterAuthButton?.isEnabled = !show
         binding?.emailInputLayout?.isEnabled = !show
         binding?.passwordInputLayout?.isEnabled = !show

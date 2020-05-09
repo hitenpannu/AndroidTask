@@ -133,6 +133,7 @@ class AuthFragmentViewModel(
 
     private fun startSignup() {
         CoroutineScope(Dispatchers.IO).launch {
+            mutableAuthProgress.postValue(true)
             try {
                 val user = signUpInteractor.signUp(mutableUserName.value!!, mutableUserEmail.value!!, mutableUserPassword.value!!)
                 mutableAuthSuccess.postValue(true)

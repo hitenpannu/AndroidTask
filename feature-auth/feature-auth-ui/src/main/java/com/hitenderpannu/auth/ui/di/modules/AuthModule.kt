@@ -1,6 +1,5 @@
 package com.hitenderpannu.auth.ui.di.modules
 
-import androidx.lifecycle.ViewModelProviders
 import com.hitenderpannu.auth.data.network.AuthApi
 import com.hitenderpannu.auth.data.network.AuthRepo
 import com.hitenderpannu.auth.data.network.AuthRepoImpl
@@ -9,7 +8,6 @@ import com.hitenderpannu.auth.domain.login.LoginInteractorImpl
 import com.hitenderpannu.auth.domain.signup.SignUpInteractor
 import com.hitenderpannu.auth.domain.signup.SignUpInteractorImpl
 import com.hitenderpannu.auth.ui.AuthActivity
-import com.hitenderpannu.auth.ui.AuthViewModel
 import com.hitenderpannu.auth.ui.ViewModelFactory
 import com.hitenderpannu.auth.ui.di.AuthScope
 import com.hitenderpannu.common.domain.UserPreferences
@@ -50,5 +48,4 @@ class AuthModule(private val authActivity: AuthActivity) {
         loginInteractor: LoginInteractor,
         signUpInteractor: SignUpInteractor
     ) = ViewModelFactory(loginInteractor, signUpInteractor)
-
 }
