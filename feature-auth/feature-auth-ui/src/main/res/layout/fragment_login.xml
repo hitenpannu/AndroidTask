@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/size16"
+    android:animateLayoutChanges="true"
     android:id="@+id/authConstraintLayout"
     tools:context=".login.AuthFragment">
 
@@ -18,7 +19,6 @@
         android:text="@string/label_welcome_back"
         android:textSize="@dimen/text24"
         android:textColor="@color/gunmetal"
-        android:transitionName="@string/transitionLabelAuthTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

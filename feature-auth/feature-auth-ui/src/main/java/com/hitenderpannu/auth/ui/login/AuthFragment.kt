@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
@@ -67,9 +66,9 @@ class AuthFragment : Fragment() {
 
         viewModel.authButtonEnabled.observe(viewLifecycleOwner, loginButtonStatusObserver)
 
-        viewModel.loginProgress.observe(viewLifecycleOwner, loginProgressObserver)
-        viewModel.loginSuccess.observe(viewLifecycleOwner, loginSuccessObserver)
-        viewModel.loginError.observe(viewLifecycleOwner, loginErrorObserver)
+        viewModel.authProgress.observe(viewLifecycleOwner, loginProgressObserver)
+        viewModel.authSuccess.observe(viewLifecycleOwner, loginSuccessObserver)
+        viewModel.authError.observe(viewLifecycleOwner, loginErrorObserver)
 
         viewModel.nameLayoutVisibilityLiveData.observe(viewLifecycleOwner, nameLayoutVisibilityObserver)
         viewModel.authLabelResource.observe(viewLifecycleOwner, authLabelResourceObserver)
@@ -134,10 +133,11 @@ class AuthFragment : Fragment() {
 
     private val loginProgressObserver = Observer<Boolean> { show ->
         if (show) binding?.progress?.show() else binding?.progress?.hide()
-        binding?.authButton?.isVisible = !show
+        binding?.authButton?.visibility = if(show) View.VISIBLE else View.INVISIBLE
         binding?.counterAuthButton?.isEnabled = !show
         binding?.emailInputLayout?.isEnabled = !show
         binding?.passwordInputLayout?.isEnabled = !show
+        binding?.nameInputLayout?.isEnabled = !show
     }
 
     override fun onDestroyView() {

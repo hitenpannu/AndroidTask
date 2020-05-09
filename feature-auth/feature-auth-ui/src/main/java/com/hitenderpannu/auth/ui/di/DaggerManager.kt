@@ -3,7 +3,6 @@ package com.hitenderpannu.auth.ui.di
 import com.hitenderpannu.auth.ui.AuthActivity
 import com.hitenderpannu.auth.ui.di.modules.AuthModule
 import com.hitenderpannu.auth.ui.login.AuthFragment
-import com.hitenderpannu.auth.ui.signup.SignupFragment
 import com.hitenderpannu.base.MainApplication
 
 internal object DaggerManager {
@@ -20,10 +19,6 @@ internal object DaggerManager {
 
     fun inject(authFragment: AuthFragment) {
         authComponent?.inject(authFragment)
-    }
-
-    fun inject(signupFragment: SignupFragment) {
-        authComponent?.inject(signupFragment)
     }
 
     fun destroy() {

@@ -1,9 +1,11 @@
 package com.hitenderpannu.auth.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hitenderpannu.auth.domain.login.LoginInteractor
+import com.hitenderpannu.auth.domain.signup.SignUpInteractor
 import com.hitenderpannu.auth.ui.R
 import com.hitenderpannu.common.utils.isEmailValid
 import kotlinx.coroutines.CoroutineScope
@@ -11,8 +13,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
-class AuthFragmentViewModel(private val loginInteractor: LoginInteractor) : ViewModel() {
-    enum class AUTH_MODE {
+class AuthFragmentViewModel(
+    private val loginInteractor: LoginInteractor,
+    private val signUpInteractor: SignUpInteractor
+) : ViewModel() {
+
+    private enum class AUTH_MODE {
         LOGIN,
         SIGN_UP
     }
@@ -20,9 +26,9 @@ class AuthFragmentViewModel(private val loginInteractor: LoginInteractor) : View
     private val mutableUserName = MutableLiveData<String>()
     private val mutableUserEmail = MutableLiveData<String>()
     private val mutableUserPassword = MutableLiveData<String>()
-    private val mutableLoginProgress = MutableLiveData<Boolean>()
-    private val mutableLoginSuccess = MutableLiveData<Boolean>()
-    private val mutableLoginError = MutableLiveData<String>()
+    private val mutableAuthProgress = MutableLiveData<Boolean>()
+    private val mutableAuthSuccess = MutableLiveData<Boolean>()
+    private val mutableAuthError = MutableLiveData<String>()
 
     private var selectedAuthMode: AUTH_MODE by Delegates.observable(AUTH_MODE.LOGIN) { property, oldValue, newValue ->
         when (newValue) {
@@ -39,9 +45,9 @@ class AuthFragmentViewModel(private val loginInteractor: LoginInteractor) : View
     private val mutablePasswordError = MutableLiveData<String?>()
     val passwordError: LiveData<String?> = mutablePasswordError
 
-    val loginProgress: LiveData<Boolean> = mutableLoginProgress
-    val loginSuccess: LiveData<Boolean> = mutableLoginSuccess
-    val loginError: LiveData<String> = mutableLoginError
+    val authProgress: LiveData<Boolean> = mutableAuthProgress
+    val authSuccess: LiveData<Boolean> = mutableAuthSuccess
+    val authError: LiveData<String> = mutableAuthError
 
     private val mutableNameInputVisibility = MutableLiveData<Boolean>()
     val nameLayoutVisibilityLiveData: LiveData<Boolean> = mutableNameInputVisibility
@@ -113,19 +119,30 @@ class AuthFragmentViewModel(private val loginInteractor: LoginInteractor) : View
 
     private fun startLogin() {
         CoroutineScope(Dispatchers.IO).launch {
-            mutableLoginProgress.postValue(true)
+            mutableAuthProgress.postValue(true)
             try {
                 val loggedInUser = loginInteractor.login(mutableUserEmail.value ?: "", mutableUserPassword.value ?: "")
-                mutableLoginSuccess.postValue(true)
+                mutableAuthSuccess.postValue(true)
             } catch (error: Throwable) {
-                mutableLoginError.postValue(error.message ?: "Something went wrong")
+                mutableAuthError.postValue(error.message ?: "Something went wrong")
             } finally {
-                mutableLoginProgress.postValue(false)
+                mutableAuthProgress.postValue(false)
             }
         }
     }
 
     private fun startSignup() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val user = signUpInteractor.signUp(mutableUserName.value!!, mutableUserEmail.value!!, mutableUserPassword.value!!)
+                mutableAuthSuccess.postValue(true)
+            } catch (error: Throwable) {
+                Log.e("ERROR", error?.message ?: "")
+                mutableAuthError.postValue(error.message ?: "")
+            } finally {
+                mutableAuthProgress.postValue(false)
+            }
+        }
     }
 
     private fun allFormFieldsAreValid() : Boolean {
