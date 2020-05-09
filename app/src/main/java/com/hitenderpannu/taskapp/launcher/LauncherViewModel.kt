@@ -11,14 +11,15 @@ class LauncherViewModel(
     private val homeRouter: HomeRouter
 ) : ViewModel() {
     init {
-        //checkIfUserIsLoggedIn()
+        checkIfUserIsLoggedIn()
     }
 
     fun checkIfUserIsLoggedIn() {
-        if (!userPreferences.isUserLoggedIn()) {
-            authRouter.startAuth()
-        } else {
-            homeRouter.startHome(true)
-        }
+//        if (!userPreferences.isUserLoggedIn()) {
+//            authRouter.startAuth()
+//        } else {
+//            homeRouter.startHome(true)
+//        }
+        authRouter.startAuth()
     }
 }

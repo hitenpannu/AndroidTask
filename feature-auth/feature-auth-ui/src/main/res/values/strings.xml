@@ -22,4 +22,5 @@
 
     <string name="action_already_have_account">Already have an account? Login</string>
     <string name="do_not_have_account">Do not have account? Sign up</string>
+    <string name="transitionLabelAuthTitle" translatable="false">transition_label_auth_title</string>
 </resources>

@@ -18,7 +18,6 @@ class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : 
     private val userName = MutableLiveData<String>()
     private val email = MutableLiveData<String>()
     private val password = MutableLiveData<String>()
-    private val confirmPassword = MutableLiveData<String>()
 
     private val mutableUser = MutableLiveData<User>()
     private val mutableProgress = MutableLiveData<Boolean>()
@@ -31,13 +30,11 @@ class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : 
     val mutableUserNameError: LiveData<String?> = Transformations.map(userName, this::validateUserName)
     val mutableEmailError: LiveData<String?> = Transformations.map(email, this::validateEmail)
     val mutablePasswordError: LiveData<String?> = Transformations.map(password, this::validatePassword)
-    val mutableConfirmPasswordError: LiveData<String?> = Transformations.map(confirmPassword, this::validateConfirmPassword)
 
     private val allErrors = MediatorLiveData<String?>().apply {
         addSource(mutableUserNameError) { this.value = if (isUserInputValid()) null else it }
         addSource(mutableEmailError) { this.value = if (isUserInputValid()) null else it }
         addSource(mutablePasswordError) { this.value = if (isUserInputValid()) null else it }
-        addSource(mutableConfirmPasswordError) { this.value = if (isUserInputValid()) null else it }
     }
 
     val shouldEnableSignUpButton: LiveData<Boolean> = Transformations.map(allErrors) { error -> error == null }
@@ -46,7 +43,6 @@ class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : 
     fun updateUserName(userName: String) = this.userName.postValue(userName)
     fun updateEmail(userEmail: String) = this.email.postValue(userEmail)
     fun updateUserPassword(userPassword: String) = this.password.postValue(userPassword)
-    fun updateUserConfirmPassword(confirmPassword: String) = this.confirmPassword.postValue(confirmPassword)
 
     private fun validateUserName(name: String): String? = if (name.isEmpty()) "Please enter username" else null
 
@@ -61,14 +57,10 @@ class SignupFragmentViewModel(private val signUpInteractor: SignUpInteractor) : 
         return null
     }
 
-    private fun validateConfirmPassword(confirmPassword: String): String? {
-        return if (confirmPassword != password.value) "Should match password above" else null
-    }
-
     private fun invalidateSignUpButtonState() {
     }
 
-    private fun isUserInputValid() = arrayOf(mutableUserNameError, mutableEmailError, mutablePasswordError, mutableConfirmPasswordError)
+    private fun isUserInputValid() = arrayOf(mutableUserNameError, mutableEmailError, mutablePasswordError)
         .all { it.value == null }
 
     fun startSignUp() {

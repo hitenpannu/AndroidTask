@@ -33,8 +33,6 @@ class LauncherActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        startActivity(Intent(this, UserSetupActivity::class.java))
-
         binding?.btnDownloadTaskFeature?.setOnClickListener {
             startDownloadingTaskFeature()
         }

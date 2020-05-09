@@ -1,6 +1,7 @@
 package com.hitenderpannu.auth.ui.signup
 
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,8 +39,9 @@ class SignupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         performDependencyInjection.invoke()
-
         binding = FragmentSignupBinding.inflate(inflater)
+        sharedElementEnterTransition = ChangeBounds().apply { duration = 3000 }
+        sharedElementReturnTransition = ChangeBounds().apply { duration = 3000 }
         return binding!!.root
     }
 
@@ -59,7 +61,6 @@ class SignupFragment : Fragment() {
         viewModel.mutableUserNameError.observe(this, userNameErrorObserver)
         viewModel.mutableEmailError.observe(this, emailErrorObserver)
         viewModel.mutablePasswordError.observe(this, passwordErrorObserver)
-        viewModel.mutableConfirmPasswordError.observe(this, confirmPasswordErrorObserver)
         viewModel.shouldEnableSignUpButton.observe(this, signUpButtonStatusObserver)
         viewModel.progress().observe(this, progressObserver)
         viewModel.signUpError().observe(this, errorObserver)
@@ -69,19 +70,16 @@ class SignupFragment : Fragment() {
         binding?.nameInputEditText?.doAfterTextChanged { viewModel.updateUserName(it.toString()) }
         binding?.emailInputEditText?.doAfterTextChanged { viewModel.updateEmail(it.toString()) }
         binding?.passwordInputEditText?.doAfterTextChanged { viewModel.updateUserPassword(it.toString()) }
-        binding?.confirmPasswordInputEditText?.doAfterTextChanged { viewModel.updateUserConfirmPassword(it.toString()) }
     }
 
     private val userNameErrorObserver = Observer<String?> { binding?.nameInputLayout?.error = it }
     private val emailErrorObserver = Observer<String?> { binding?.emailInputLayout?.error = it }
     private val passwordErrorObserver = Observer<String?> { binding?.passwordInputLayout?.error = it }
-    private val confirmPasswordErrorObserver = Observer<String?> { binding?.confirmPasswordInputLayout?.error = it }
     private val signUpButtonStatusObserver = Observer<Boolean> { binding?.buttonSignup?.isEnabled = it }
     private val progressObserver = Observer<Boolean> { isInProgress ->
         binding?.nameInputEditText?.isEnabled = !isInProgress
         binding?.emailInputEditText?.isEnabled = !isInProgress
         binding?.passwordInputEditText?.isEnabled = !isInProgress
-        binding?.confirmPasswordInputEditText?.isEnabled = !isInProgress
         binding?.buttonSignup?.isVisible = !isInProgress
         if (isInProgress) binding?.signUpProgress?.show() else binding?.signUpProgress?.hide()
     }
@@ -100,6 +98,5 @@ class SignupFragment : Fragment() {
         viewModel.mutableUserNameError.removeObserver(userNameErrorObserver)
         viewModel.mutableEmailError.removeObserver(emailErrorObserver)
         viewModel.mutablePasswordError.removeObserver(passwordErrorObserver)
-        viewModel.mutableConfirmPasswordError.removeObserver(confirmPasswordErrorObserver)
     }
 }
