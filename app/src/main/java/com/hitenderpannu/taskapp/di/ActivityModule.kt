@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.hitenderpannu.auth.ui.AuthRouter
 import com.hitenderpannu.common.domain.UserPreferences
+import com.hitenderpannu.feature_dashboard_ui.DashBoardRouter
 import com.hitenderpannu.taskapp.DynamicFeatureManager
 import com.hitenderpannu.taskapp.home.HomeRouter
 import com.hitenderpannu.taskapp.launcher.LauncherViewModel
@@ -23,6 +24,10 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @ActivityScope
     @Provides
+    fun provideDashBoardRouter() = DashBoardRouter(activity)
+
+    @ActivityScope
+    @Provides
     fun provideDynamicFeatureManager() = DynamicFeatureManager(activity)
 
     @ActivityScope
@@ -31,8 +36,9 @@ class ActivityModule(private val activity: AppCompatActivity) {
         userPreferences: UserPreferences,
         authRouter: AuthRouter,
         homeRouter: HomeRouter,
+        dashBoardRouter: DashBoardRouter,
         dynamicFeatureManager: DynamicFeatureManager) =
-        CustomViewModelFactory(userPreferences, authRouter, homeRouter, dynamicFeatureManager)
+        CustomViewModelFactory(userPreferences, authRouter, homeRouter, dashBoardRouter, dynamicFeatureManager)
 
     @Provides
     fun provideMainActivityViewModel(

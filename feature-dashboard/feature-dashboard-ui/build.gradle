@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply from: "../libraries.gradle"
 
 android {
     compileSdkVersion 29
@@ -16,8 +14,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
-        buildConfigField("String", "BASE_URL", '"https://byb-server.herokuapp.com/"')
     }
 
     buildTypes {
@@ -26,36 +22,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
+
 }
 
 dependencies {
+    implementation project(":base")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
-
-    api 'com.google.android.material:material:1.1.0'
-    api 'com.google.android.play:core:1.6.4'
-
-    implementation dagger.core
-    kapt dagger.processor
-
-    implementation networkDependencies.retrofit
-    implementation networkDependencies.retrofitConverter
-    implementation networkDependencies.retrofiLoggingInterceptor
-
-    implementation project(':common-domain')
-    implementation project(":common-Utils")
-
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
 }

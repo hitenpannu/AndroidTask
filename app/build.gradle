@@ -51,6 +51,7 @@ dependencies {
     implementation project(":common-domain")
     implementation project(":feature-auth:feature-auth-ui")
     implementation project(':feature-workout:feature-workout-ui')
+    implementation project(':feature-dashboard:feature-dashboard-ui')
 
     implementation dagger.core
     kapt dagger.processor
