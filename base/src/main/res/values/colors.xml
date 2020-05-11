@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">@color/gunmetal</color>
+    <color name="colorPrimaryDark">@color/gunmetal</color>
+    <color name="colorAccent">@color/blush</color>
+
+    <color name="white">#fff</color>
+    <color name="gunmetal">#2C363F</color>
+    <color name="blush">#E75A7C</color>
+    <color name="ivory">#FDFEF6</color>
+    <color name="timberwolf">#D6DBD2</color>
+    <color name="laurelgreen">#BBC7A4</color>
 </resources>

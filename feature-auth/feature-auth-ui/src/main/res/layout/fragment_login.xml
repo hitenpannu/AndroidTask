@@ -99,7 +99,7 @@
         app:layout_constraintRight_toRightOf="@+id/authButton"
         app:layout_constraintBottom_toBottomOf="@+id/authButton"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/authButton"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
@@ -111,7 +111,8 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/counterAuthButton"
