@@ -21,14 +21,15 @@
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-domain" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-entity" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-ui" />
-            <option value="$PROJECT_DIR$/feature-dashboard" />
-            <option value="$PROJECT_DIR$/feature-dashboard/feature-dashboard-ui" />
             <option value="$PROJECT_DIR$/feature-task" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-data-network" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-entity" />
             <option value="$PROJECT_DIR$/feature-task/feature_task_ui" />
             <option value="$PROJECT_DIR$/feature-workout" />
+            <option value="$PROJECT_DIR$/feature-workout/feature-workout-data-network" />
+            <option value="$PROJECT_DIR$/feature-workout/feature-workout-domain" />
+            <option value="$PROJECT_DIR$/feature-workout/feature-workout-entity" />
             <option value="$PROJECT_DIR$/feature-workout/feature-workout-ui" />
           </set>
         </option>

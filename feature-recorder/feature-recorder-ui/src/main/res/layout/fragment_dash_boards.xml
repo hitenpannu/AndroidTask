@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".dashboard.DashBoardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size16"
+            android:text="@string/label_dashboard"
+            android:textColor="@color/gunmetal"
+            android:textSize="@dimen/text22"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/dashboardUserAvatar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dashboardUserAvatar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/dashboardUserAvatar"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_margin="@dimen/size16"
+            android:padding="@dimen/size8"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_social"
+            app:tint="@color/gunmetal" />
+
+        <include
+            android:id="@+id/dashboardHeader"
+            layout="@layout/layout_dashboard_header" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/noWorkoutsAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size26"
+            android:layout_marginEnd="@dimen/size26"
+            android:gravity="center"
+            android:text="@string/message_no_workouts"
+            android:textColor="@color/charcoal"
+            app:layout_constraintBottom_toBottomOf="@+id/createFirstWorkoutButton"
+            app:layout_constraintLeft_toLeftOf="@+id/dashboardHeader"
+            app:layout_constraintRight_toRightOf="@+id/dashboardHeader"
+            app:layout_constraintTop_toBottomOf="@+id/dashboardHeader" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createFirstWorkoutButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size26"
+            android:layout_marginEnd="@dimen/size26"
+            android:background="@drawable/create_first_workout_background"
+            android:gravity="center"
+            android:paddingStart="@dimen/size20"
+            android:paddingEnd="@dimen/size20"
+            android:text="@string/action_create_workout"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/noWorkoutsAvailable"
+            app:layout_constraintRight_toRightOf="@+id/noWorkoutsAvailable"
+            app:layout_constraintTop_toBottomOf="@+id/noWorkoutsAvailable" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

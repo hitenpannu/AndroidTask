@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/size8"
+    app:cardElevation="@dimen/size4"
+    app:cardUseCompatPadding="true"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/dashboardUserAvatar"
+    tools:showIn="@layout/fragment_dash_boards">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWorkoutCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size8"
+            android:paddingTop="@dimen/size16"
+            android:paddingBottom="@dimen/size4"
+            android:text="24"
+            android:textColor="@color/rich_black"
+            android:textSize="@dimen/text18"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/totalWorkoutCountLabel"
+            app:layout_constraintEnd_toStartOf="@+id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWorkoutCountLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size4"
+            android:paddingBottom="@dimen/size16"
+            android:text="Workouts\ncompleted"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/text12"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/totalWorkoutCount"
+            app:layout_constraintRight_toRightOf="@+id/totalWorkoutCount"
+            app:layout_constraintTop_toBottomOf="@+id/totalWorkoutCount" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:background="@color/gunmetal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/totalWeightLifted"
+            app:layout_constraintStart_toEndOf="@+id/totalWorkoutCount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWeightLifted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size8"
+            android:paddingTop="@dimen/size16"
+            android:paddingBottom="@dimen/size4"
+            android:text="103kg"
+            android:gravity="center"
+            android:textColor="@color/rich_black"
+            android:textSize="@dimen/text18"
+            app:layout_constraintBottom_toTopOf="@+id/totalWeightLiftedLabel"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWeightLiftedLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size4"
+            android:paddingBottom="@dimen/size16"
+            android:text="Total \nWeight Lifted"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/text12"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/totalWeightLifted"
+            app:layout_constraintRight_toRightOf="@+id/totalWeightLifted"
+            app:layout_constraintTop_toBottomOf="@+id/totalWeightLifted" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:background="@color/gunmetal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/currentWeight"
+            app:layout_constraintStart_toEndOf="@+id/totalWeightLifted"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currentWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size8"
+            android:paddingTop="@dimen/size16"
+            android:paddingBottom="@dimen/size4"
+            android:text="83kg"
+            android:textColor="@color/rich_black"
+            android:textSize="@dimen/text18"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/currentWeightLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currentWeightLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size4"
+            android:paddingBottom="@dimen/size16"
+            android:text="Current\nWeight"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/text12"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/currentWeight"
+            app:layout_constraintRight_toRightOf="@+id/currentWeight"
+            app:layout_constraintTop_toBottomOf="@+id/currentWeight" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

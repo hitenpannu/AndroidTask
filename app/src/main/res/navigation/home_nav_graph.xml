@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@+id/workout">
+
+    <fragment
+        android:id="@+id/workout"
+        android:name="com.hitenderpannu.feature_dashboard_ui.WorkoutContainerFragment"
+        android:label="@string/label_workout_creation"
+        app:moduleName=":feature-workout:feature-workout-ui"
+        tools:layout="@layout/fragment_workout_container" />
+
+</navigation>

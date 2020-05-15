@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph_workout"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.hitenderpannu.feature_dashboard_ui.dashboard.DashBoardFragment"
+        android:label="fragment_dash_boards"
+        tools:layout="@layout/fragment_dash_boards">
+        <action
+            android:id="@+id/action_dashBoardFragment_to_addExerciseFragment"
+            app:destination="@id/addExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.hitenderpannu.feature_dashboard_ui.addExercise.AddExerciseFragment"
+        android:label="AddExerciseFragment"
+        tools:layout="@layout/fragment_add_exercise" />
+</navigation>
