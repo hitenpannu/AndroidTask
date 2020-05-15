@@ -1,10 +1,6 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply from: "../../gradle/feature/data-network.gradle";
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(":feature-workout:feature-workout-entity")
+    implementation project(":common-entity")
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"

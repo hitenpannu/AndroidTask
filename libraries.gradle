@@ -18,7 +18,8 @@ ext {
     networkDependencies = [
             retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofiLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${retrofitLogInterceptor}"
+            retrofiLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${retrofitLogInterceptor}",
+            gson : "com.google.code.gson:gson:2.8.6"
     ]
 
     androidx = [

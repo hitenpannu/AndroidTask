@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hitenderpannu.workout.ui">
+    package="com.hitenderpannu.feature_dashboard_ui">
 
     <application>
-        <activity android:name=".UserSetupActivity"></activity>
+        <activity android:name=".dashboard.DashBoardFragment"/>
     </application>
 
 </manifest>
