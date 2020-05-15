@@ -1,6 +1,7 @@
 apply from: "../../gradle/feature/data-network.gradle";
 
 dependencies {
+    implementation project(":feature-workout:feature-workout-domain")
     implementation project(":feature-workout:feature-workout-entity")
     implementation project(":common-entity")
 }

@@ -4,6 +4,5 @@ dependencies {
     implementation project(':common-domain')
     implementation project(":common-Utils")
     implementation project(":common-entity")
-    implementation project(":feature-workout:feature-workout-data-network")
     implementation project(":feature-workout:feature-workout-entity")
 }

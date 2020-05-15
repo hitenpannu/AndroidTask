@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/feature-task/feature-task-entity" />
             <option value="$PROJECT_DIR$/feature-task/feature_task_ui" />
             <option value="$PROJECT_DIR$/feature-workout" />
+            <option value="$PROJECT_DIR$/feature-workout/feature-workout-data-local" />
             <option value="$PROJECT_DIR$/feature-workout/feature-workout-data-network" />
             <option value="$PROJECT_DIR$/feature-workout/feature-workout-domain" />
             <option value="$PROJECT_DIR$/feature-workout/feature-workout-entity" />

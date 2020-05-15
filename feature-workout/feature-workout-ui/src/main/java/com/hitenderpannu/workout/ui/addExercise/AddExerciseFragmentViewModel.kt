@@ -26,11 +26,11 @@ class AddExerciseFragmentViewModel(private val exerciseListInteractor: ExerciseL
 
     private val listOfSelectedExercises = mutableListOf<Exercise>()
 
-    private fun fetchListOfExercises() {
+    fun fetchListOfExercises(fetchFresh: Boolean = false) {
         CoroutineScope(Dispatchers.IO).launch {
             mutableExerciseListProgress.postValue(true)
             try {
-                val list = exerciseListInteractor.getListOfAllExercises()
+                val list = exerciseListInteractor.getListOfAllExercises(fetchFresh)
                 mutableExerciseList.postValue(list)
             } catch (error: Throwable) {
                 mutableErrorMessage.postValue(error.message)

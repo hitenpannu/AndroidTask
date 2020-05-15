@@ -4,5 +4,5 @@ import com.hitenderpannu.workout.entity.Exercise
 
 interface ExerciseListInteractor {
 
-    suspend fun getListOfAllExercises():List<Exercise>
+    suspend fun getListOfAllExercises(fetchFresh: Boolean = false):List<Exercise>
 }

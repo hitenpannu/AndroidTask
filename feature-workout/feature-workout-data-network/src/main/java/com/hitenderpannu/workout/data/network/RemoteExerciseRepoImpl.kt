@@ -1,6 +1,7 @@
 package com.hitenderpannu.workout.data.network
 
 import com.hitenderpannu.common.entity.StatusCode.SUCCESS
+import com.hitenderpannu.workout.domain.remote_repo.RemoteExerciseRepo
 import com.hitenderpannu.workout.entity.Exercise
 import com.hitenderpannu.workout.entity.FailedToGetExercises
 

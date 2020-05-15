@@ -13,11 +13,13 @@ dependencies {
     implementation project(":feature-workout:feature-workout-data-network")
     implementation project(":feature-workout:feature-workout-domain")
     implementation project(":feature-workout:feature-workout-entity")
+    implementation project(":feature-workout:feature-workout-data-local")
     
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation nav.fragment
     implementation nav.ui
+    implementation androidx.swipeRefreshLayout
 
     implementation room.core
     kapt room.annotationProcessor

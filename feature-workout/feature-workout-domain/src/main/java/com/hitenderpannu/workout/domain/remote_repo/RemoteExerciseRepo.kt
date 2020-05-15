@@ -1,4 +1,4 @@
-package com.hitenderpannu.workout.data.network
+package com.hitenderpannu.workout.domain.remote_repo
 
 import com.hitenderpannu.workout.entity.Exercise
 

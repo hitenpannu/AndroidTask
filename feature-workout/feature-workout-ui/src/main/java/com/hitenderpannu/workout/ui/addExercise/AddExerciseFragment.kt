@@ -2,7 +2,6 @@ package com.hitenderpannu.workout.ui.addExercise
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +48,7 @@ class AddExerciseFragment : Fragment() {
         binding.exerciseListView.layoutManager = LinearLayoutManager(view.context)
         binding.exerciseListView.adapter = exerciseListAdapter
         exerciseListAdapter.attachStore(viewModel)
+        binding.swipeRefresh.setOnRefreshListener { viewModel.fetchListOfExercises(true) }
         observeLiveData()
     }
 
@@ -62,7 +62,11 @@ class AddExerciseFragment : Fragment() {
         binding.addExerciseCloseButton.isEnabled = !show
         binding.addExerciseNextButton.isEnabled = !show
         binding.exerciseListView.isVisible = !show
-        if (show) binding.loadingProgress.show() else binding.loadingProgress.hide()
+        if (binding.swipeRefresh.isRefreshing) {
+            binding.swipeRefresh.isRefreshing = show
+        } else {
+            if (show) binding.loadingProgress.show() else binding.loadingProgress.hide()
+        }
     }
 
     private val errorMessageObserver = Observer<String?> { message ->
@@ -70,7 +74,7 @@ class AddExerciseFragment : Fragment() {
             Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
     }
-    private val exerciseListObserver = Observer<List<Exercise>> {exerciseList ->
+    private val exerciseListObserver = Observer<List<Exercise>> { exerciseList ->
         exerciseListAdapter.updateExerciseList(exerciseList)
     }
 }

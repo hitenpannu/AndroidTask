@@ -20,10 +20,10 @@
         android:layout_height="28dp"
         android:layout_margin="@dimen/size8"
         android:padding="@dimen/size8"
-        app:srcCompat="@drawable/ic_close"
         app:layout_constraintBottom_toBottomOf="@+id/addExerciseNextButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/addExerciseNextButton" />
+        app:layout_constraintTop_toTopOf="@+id/addExerciseNextButton"
+        app:srcCompat="@drawable/ic_close" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addExerciseNextButton"
@@ -69,31 +69,37 @@
         android:layout_marginTop="@dimen/size16"
         android:padding="@dimen/size8"
         android:paddingBottom="@dimen/size16"
-        app:srcCompat="@drawable/ic_filter"
         android:tint="@color/white"
         app:layout_constraintRight_toRightOf="@+id/addExerciseNextButton"
-        app:layout_constraintTop_toBottomOf="@+id/addExerciseHeaderSubLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/addExerciseHeaderSubLabel"
+        app:srcCompat="@drawable/ic_filter" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/exerciseListView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exerciseListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/loadingProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:indeterminate="true"
-        style="@style/Widget.AppCompat.ProgressBar"
         android:indeterminateBehavior="repeat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
