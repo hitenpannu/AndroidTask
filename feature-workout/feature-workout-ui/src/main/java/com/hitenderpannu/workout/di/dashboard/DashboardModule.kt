@@ -1,4 +1,4 @@
-package com.hitenderpannu.feature_dashboard_ui.di
+package com.hitenderpannu.workout.di.dashboard
 
 import dagger.Module
 

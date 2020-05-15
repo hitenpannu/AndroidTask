@@ -74,4 +74,26 @@
         app:layout_constraintRight_toRightOf="@+id/addExerciseNextButton"
         app:layout_constraintTop_toBottomOf="@+id/addExerciseHeaderSubLabel" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/exerciseListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:indeterminate="true"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:indeterminateBehavior="repeat"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

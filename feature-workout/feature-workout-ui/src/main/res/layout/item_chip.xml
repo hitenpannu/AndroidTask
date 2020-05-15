@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/size4">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/body_part_chip_background"
+        android:paddingStart="@dimen/size8"
+        android:paddingTop="@dimen/size4"
+        android:paddingEnd="@dimen/size8"
+        android:paddingBottom="@dimen/size4"
+        android:textColor="@color/charcoal"
+        android:textSize="@dimen/text12"
+        tools:text="Legs" />
+
+</FrameLayout>

@@ -1,4 +1,4 @@
-package com.hitenderpannu.feature_dashboard_ui.dashboard
+package com.hitenderpannu.workout.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/size8">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exerciseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size8"
+        android:textSize="@dimen/text16"
+        android:textStyle="bold"
+        android:textColor="@color/gunmetal"
+        android:layout_marginStart="@dimen/size8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/actionAddRemove"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bicep Curl" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/bodyParts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/size8"
+        android:paddingEnd="@dimen/size8"
+        android:layout_marginStart="@dimen/size8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/actionAddRemove"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseName" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/actionAddRemove"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:padding="@dimen/size16"
+        app:layout_constraintBottom_toBottomOf="@+id/bodyParts"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exerciseName"
+        app:srcCompat="@drawable/ic_add" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/size16"
+        android:alpha="0.3"
+        android:background="@color/charcoal"
+        app:layout_constraintTop_toBottomOf="@+id/bodyParts" />
+</androidx.constraintlayout.widget.ConstraintLayout>

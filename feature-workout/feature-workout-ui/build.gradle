@@ -8,8 +8,18 @@ android {
 
 dependencies {
     implementation project(":base")
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":common-Utils")
+    implementation project(":common-domain")
+    implementation project(":feature-workout:feature-workout-data-network")
+    implementation project(":feature-workout:feature-workout-domain")
+    implementation project(":feature-workout:feature-workout-entity")
+    
+
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation nav.fragment
     implementation nav.ui
+
+    implementation room.core
+    kapt room.annotationProcessor
+    implementation room.ktx
 }

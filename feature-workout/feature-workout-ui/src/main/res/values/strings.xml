@@ -6,4 +6,6 @@
     <string name="action_next">Next</string>
     <string name="label_add_exercise">Add Exercise</string>
     <string name="label_workout_creation">Workout Creation</string>
+    <string name="label_body_parts">Body Parts</string>
+    <string name="label_equipments">Equipments</string>
 </resources>

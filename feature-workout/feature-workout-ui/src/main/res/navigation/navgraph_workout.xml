@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashBoardFragment"
-        android:name="com.hitenderpannu.feature_dashboard_ui.dashboard.DashBoardFragment"
+        android:name="com.hitenderpannu.workout.ui.dashboard.DashBoardFragment"
         android:label="fragment_dash_boards"
         tools:layout="@layout/fragment_dash_boards">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
-        android:name="com.hitenderpannu.feature_dashboard_ui.addExercise.AddExerciseFragment"
+        android:name="com.hitenderpannu.workout.ui.addExercise.AddExerciseFragment"
         android:label="AddExerciseFragment"
         tools:layout="@layout/fragment_add_exercise" />
 </navigation>

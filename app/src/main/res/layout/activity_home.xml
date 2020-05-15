@@ -17,11 +17,16 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/home_nav_graph" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_charcoal" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:backgroundTint="@color/white"
         app:elevation="@dimen/size4"
         app:labelVisibilityMode="selected"
         app:menu="@menu/dashboard" />

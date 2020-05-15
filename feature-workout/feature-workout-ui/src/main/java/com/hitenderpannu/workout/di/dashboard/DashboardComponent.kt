@@ -1,7 +1,8 @@
-package com.hitenderpannu.feature_dashboard_ui.di
+package com.hitenderpannu.workout.di.dashboard
 
 import com.hitenderpannu.base.di.CoreComponent
-import com.hitenderpannu.feature_dashboard_ui.dashboard.DashBoardFragment
+import com.hitenderpannu.workout.di.DashboardScope
+import com.hitenderpannu.workout.ui.dashboard.DashBoardFragment
 import dagger.Component
 
 @DashboardScope
