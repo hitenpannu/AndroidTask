@@ -22,4 +22,6 @@
     <dimen name="size22">22dp</dimen>
     <dimen name="size24">24dp</dimen>
     <dimen name="size26">26dp</dimen>
+
+    <dimen name="status_bar_height">24dp</dimen>
 </resources>

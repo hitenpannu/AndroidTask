@@ -10,6 +10,8 @@
         <item name="shapeAppearanceSmallComponent"> @style/ShapeAppearance.Local.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Medium.SmallComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Large.SmallComponent</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">

@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/light_charcoal" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
