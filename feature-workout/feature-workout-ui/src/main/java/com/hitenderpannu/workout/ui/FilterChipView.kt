@@ -22,14 +22,21 @@ class FilterChipView : FrameLayout {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.item_filter_chip, this)
         binding = ItemFilterChipBinding.bind(view)
+
+        binding.root.setOnClickListener {
+            isFilterSelected = !isFilterSelected
+        }
     }
+
+    private var uniqueId: String = ""
 
     var isFilterSelected: Boolean by Delegates.observable(false, onChange = { property, oldValue, newValue ->
         if (newValue) updateStyleForSelected() else updateStyleForUnSelected()
     })
 
-    fun setText(name: String) {
+    fun setText(name: String, id: String) {
         binding.label.text = name
+        uniqueId = id
     }
 
     private fun updateStyleForUnSelected() {

@@ -68,6 +68,7 @@ class AddExerciseFragment : Fragment() {
         viewModel.errorMessage.observe(viewLifecycleOwner, errorMessageObserver)
         viewModel.exerciseListProgress.observe(viewLifecycleOwner, progressObserver)
         viewModel.exerciseList.observe(viewLifecycleOwner, exerciseListObserver)
+        viewModel.numberOfFiltersApplied.observe(viewLifecycleOwner, appliedFilterCountObserver)
     }
 
     private val progressObserver = Observer<Boolean> { show ->
@@ -86,7 +87,12 @@ class AddExerciseFragment : Fragment() {
             Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
     }
+
     private val exerciseListObserver = Observer<List<Exercise>> { exerciseList ->
         exerciseListAdapter.updateExerciseList(exerciseList)
+    }
+
+    private val appliedFilterCountObserver = Observer<Int> { count ->
+        binding.appliedFiltersCount.text = count.toString()
     }
 }

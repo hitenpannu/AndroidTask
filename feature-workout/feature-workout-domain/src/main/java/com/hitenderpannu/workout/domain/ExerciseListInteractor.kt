@@ -11,4 +11,20 @@ interface ExerciseListInteractor {
     suspend fun getListOfBodyParts(): List<BodyPart>
 
     suspend fun getListOfEquipments(): List<Equipment>
+
+    fun getTotalNumberOfFiltersApplied(): Int
+
+    fun setApplyFilterListener(applyFilterListener: ApplyFilterListener)
+
+    fun isAddedToFilters(bodyPart: BodyPart): Boolean
+
+    fun isAddedToFilters(equipment: Equipment): Boolean
+
+    fun applyFilters(bodyParts: List<BodyPart>, equipments: List<Equipment>)
+
+    fun clearFilters()
+}
+
+interface ApplyFilterListener {
+    fun onFilterApplied()
 }

@@ -14,11 +14,11 @@ class ExerciseFilterFragmentViewModel(
     private val exerciseListInteractor: ExerciseListInteractor
 ) : ViewModel() {
 
-    private val mutableListOfBodyParts = MutableLiveData<List<BodyPart>>()
-    val listOfBodyParts: LiveData<List<BodyPart>> = mutableListOfBodyParts
+    private val mutableListOfBodyParts = MutableLiveData<List<Pair<BodyPart, Boolean>>>()
+    val listOfBodyParts: LiveData<List<Pair<BodyPart, Boolean>>> = mutableListOfBodyParts
 
-    private val mutableListOfEquipments = MutableLiveData<List<Equipment>>()
-    val listOfEquipments: LiveData<List<Equipment>> = mutableListOfEquipments
+    private val mutableListOfEquipments = MutableLiveData<List<Pair<Equipment, Boolean>>>()
+    val listOfEquipments: LiveData<List<Pair<Equipment, Boolean>>> = mutableListOfEquipments
 
     init {
         fetchAllBodyParts()
@@ -28,15 +28,19 @@ class ExerciseFilterFragmentViewModel(
     private fun fetchAllBodyParts() {
         CoroutineScope(Dispatchers.IO).launch {
             val bodyParts = exerciseListInteractor.getListOfBodyParts()
-            mutableListOfBodyParts.postValue(bodyParts)
+            mutableListOfBodyParts.postValue(bodyParts.map { Pair(it, exerciseListInteractor.isAddedToFilters(it)) })
         }
     }
 
     private fun fetchAllEquipments() {
         CoroutineScope(Dispatchers.IO).launch {
             val equipments = exerciseListInteractor.getListOfEquipments()
-            mutableListOfEquipments.postValue(equipments)
+            mutableListOfEquipments.postValue(equipments.map { Pair(it, exerciseListInteractor.isAddedToFilters(it)) })
         }
+    }
+
+    fun applyFilters(selectedBodyParts: List<BodyPart>, selectedEquipments: List<Equipment>) {
+        exerciseListInteractor.applyFilters(selectedBodyParts, selectedEquipments)
     }
 }
 

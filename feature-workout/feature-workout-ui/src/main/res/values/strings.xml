@@ -9,4 +9,5 @@
     <string name="label_body_parts">Body Parts</string>
     <string name="label_equipments">Equipments</string>
     <string name="label_filter">Filter</string>
+    <string name="action_apply">Apply</string>
 </resources>

@@ -27,5 +27,9 @@
         android:id="@+id/exerciseFiltersFragment"
         android:name="com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment"
         android:label="fragment_filters"
-        tools:layout="@layout/fragment_filters" />
+        tools:layout="@layout/fragment_filters" >
+        <action
+            android:id="@+id/action_exerciseFiltersFragment_to_addExerciseFragment2"
+            app:destination="@id/addExerciseFragment" />
+    </fragment>
 </navigation>

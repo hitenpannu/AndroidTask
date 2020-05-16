@@ -17,6 +17,12 @@ class ExerciseListInteractorImpl(
     private val localBodyPartsRepo: LocalBodyPartsRepo,
     private val localEquipmentsRepo: LocalEquipmentsRepo
 ) : ExerciseListInteractor {
+
+    private var listOfTempBodyFilters = mutableListOf<BodyPart>()
+    private var listOfTempEquipmentFilters = mutableListOf<Equipment>()
+
+    private var filterListener: ApplyFilterListener? = null
+
     override suspend fun getListOfAllExercises(fetchFresh: Boolean): List<Exercise> {
         var savedExercises = localExerciseRepo.getAllExercises()
         if (fetchFresh || savedExercises.isEmpty()) {
@@ -36,5 +42,36 @@ class ExerciseListInteractorImpl(
 
     override suspend fun getListOfEquipments(): List<Equipment> {
         return localEquipmentsRepo.getAllEquipments()
+    }
+
+    override fun isAddedToFilters(bodyPart: BodyPart): Boolean {
+        return listOfTempBodyFilters.any { it.id == bodyPart.id }
+    }
+
+    override fun isAddedToFilters(equipment: Equipment): Boolean {
+        return listOfTempEquipmentFilters.any { it.id == equipment.id }
+    }
+
+    override fun applyFilters(bodyParts: List<BodyPart>, equipments: List<Equipment>) {
+        listOfTempEquipmentFilters.clear()
+        listOfTempBodyFilters.clear()
+
+        listOfTempBodyFilters.addAll(bodyParts)
+        listOfTempEquipmentFilters.addAll(equipments)
+        filterListener?.onFilterApplied()
+    }
+
+    override fun getTotalNumberOfFiltersApplied(): Int {
+        return listOfTempBodyFilters.size + listOfTempEquipmentFilters.size
+    }
+
+    override fun setApplyFilterListener(applyFilterListener: ApplyFilterListener) {
+        filterListener = applyFilterListener
+    }
+
+    override fun clearFilters() {
+        listOfTempBodyFilters.clear()
+        listOfTempEquipmentFilters.clear()
+        filterListener?.onFilterApplied()
     }
 }
