@@ -13,3 +13,7 @@ annotation class DashboardScope
 @Scope
 @Retention(AnnotationRetention.SOURCE)
 annotation class AddExerciseScope
+
+@Scope
+@Retention(AnnotationRetention.SOURCE)
+annotation class ExerciseFilter

@@ -1,6 +1,5 @@
 package com.hitenderpannu.workout.data.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,7 +11,7 @@ import com.hitenderpannu.workout.data.local.entities.TABLE_BODY_PART
 interface BodyPartsDao {
 
     @Query("SELECT * FROM $TABLE_BODY_PART")
-    fun getAll(): LiveData<List<BodyPartEntity>>
+    fun getAll(): List<BodyPartEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(bodyParts: List<BodyPartEntity>)

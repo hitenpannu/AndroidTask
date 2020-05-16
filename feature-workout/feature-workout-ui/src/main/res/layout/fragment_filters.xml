@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/header_gradient_background"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingTop="@dimen/status_bar_height"
+    android:transitionName="sharedElementContainer"
+    tools:context="com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/labelBodyPart"
+            android:id="@+id/labelFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/size16"
-            android:text="@string/label_body_parts"
+            android:paddingStart="@dimen/size16"
+            android:paddingTop="@dimen/size16"
+            android:paddingEnd="@dimen/size16"
+            android:paddingBottom="@dimen/size8"
+            android:text="@string/label_filter"
             android:textColor="@color/white"
-            android:textSize="@dimen/text18"
+            android:textSize="@dimen/text22"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelBodyPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/size16"
+            android:paddingTop="@dimen/size8"
+            android:paddingEnd="@dimen/size16"
+            android:paddingBottom="@dimen/size16"
+            android:text="@string/label_body_parts"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelFilter" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/bodyPartsContainer"
@@ -36,11 +58,12 @@
             android:id="@+id/labelEquipments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size8"
             android:padding="@dimen/size16"
             android:text="@string/label_equipments"
+            android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/text18"
-            android:textStyle="bold"
+            android:textSize="@dimen/text12"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bodyPartsContainer" />

@@ -73,6 +73,7 @@
         android:padding="@dimen/size8"
         android:paddingBottom="@dimen/size16"
         android:tint="@color/white"
+        android:transitionName="sharedElementContainer"
         app:layout_constraintRight_toRightOf="@+id/addExerciseNextButton"
         app:layout_constraintTop_toBottomOf="@+id/addExerciseHeaderSubLabel"
         app:srcCompat="@drawable/ic_filter" />

@@ -10,35 +10,15 @@ import com.hitenderpannu.workout.domain.ExerciseListInteractor
 import com.hitenderpannu.workout.domain.ExerciseListInteractorImpl
 import com.hitenderpannu.workout.domain.local_repo.LocalExerciseRepo
 import com.hitenderpannu.workout.domain.remote_repo.RemoteExerciseRepo
-import com.hitenderpannu.workout.ui.addExercise.AddExerciseFragment
-import com.hitenderpannu.workout.ui.addExercise.AddExerciseFragmentViewModel
-import com.hitenderpannu.workout.ui.addExercise.AddExerciseListAdapter
+import com.hitenderpannu.workout.ui.add_exercise.AddExerciseFragment
+import com.hitenderpannu.workout.ui.add_exercise.AddExerciseFragmentViewModel
+import com.hitenderpannu.workout.ui.add_exercise.AddExerciseListAdapter
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
 class AddExerciseModule(val fragment: AddExerciseFragment) {
-
-    @AddExerciseScope
-    @Provides
-    fun provideExerciseApi(retrofit: Retrofit) = retrofit.create(ExerciseApi::class.java)
-
-    @AddExerciseScope
-    @Provides
-    fun provideExerciseRemoteRepo(exerciseApi: ExerciseApi): RemoteExerciseRepo {
-        return RemoteExerciseRepoImpl(exerciseApi)
-    }
-
-    @AddExerciseScope
-    @Provides
-    fun provideExerciseListInteractor(
-        networkConnectionChecker: NetworkConnectionChecker,
-        remoteExerciseRepo: RemoteExerciseRepo,
-        localExerciseRepo: LocalExerciseRepo
-    ): ExerciseListInteractor {
-        return ExerciseListInteractorImpl(networkConnectionChecker, remoteExerciseRepo, localExerciseRepo)
-    }
 
     @AddExerciseScope
     @Provides

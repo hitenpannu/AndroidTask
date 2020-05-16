@@ -16,7 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
-        android:name="com.hitenderpannu.workout.ui.addExercise.AddExerciseFragment"
+        android:name="com.hitenderpannu.workout.ui.add_exercise.AddExerciseFragment"
         android:label="AddExerciseFragment"
-        tools:layout="@layout/fragment_add_exercise" />
+        tools:layout="@layout/fragment_add_exercise" >
+        <action
+            android:id="@+id/action_addExerciseFragment_to_exerciseFiltersFragment"
+            app:destination="@id/exerciseFiltersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFiltersFragment"
+        android:name="com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filters" />
 </navigation>

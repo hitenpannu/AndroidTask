@@ -1,4 +1,4 @@
-package com.hitenderpannu.workout.ui.addExercise
+package com.hitenderpannu.workout.ui.add_exercise
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

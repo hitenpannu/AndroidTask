@@ -8,6 +8,7 @@
     <color name="gunmetal">#2C363F</color>
     <color name="charcoal">#404a52</color>
     <color name="light_charcoal">#80404A52</color>
+    <color name="filter_chip_background">#33404A52</color>
     <color name="rich_black">#161C27</color>
     <color name="blush">#e96687</color>
     <color name="ivory">#FDFEF6</color>

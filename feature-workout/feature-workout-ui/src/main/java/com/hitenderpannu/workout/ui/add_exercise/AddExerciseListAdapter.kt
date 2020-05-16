@@ -1,4 +1,4 @@
-package com.hitenderpannu.workout.ui.addExercise
+package com.hitenderpannu.workout.ui.add_exercise
 
 import android.view.LayoutInflater
 import android.view.View

@@ -40,6 +40,7 @@ dependencies {
     implementation androidx.appCompat
     implementation androidx.coreKtx
     implementation androidx.lifeCycleExtention
+    implementation androidx.material
 
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitConverter

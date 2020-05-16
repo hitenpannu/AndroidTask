@@ -1,4 +1,4 @@
-package com.hitenderpannu.workout.ui.addExercise
+package com.hitenderpannu.workout.ui.add_exercise
 
 import android.content.Context
 import android.os.Bundle
@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.Hold
 import com.hitenderpannu.feature_dashboard_ui.R
 import com.hitenderpannu.feature_dashboard_ui.databinding.FragmentAddExerciseBinding
 import com.hitenderpannu.workout.di.DaggerManager
@@ -32,6 +35,11 @@ class AddExerciseFragment : Fragment() {
 
     private lateinit var binding: FragmentAddExerciseBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exitTransition = Hold()
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerManager.inject(this)
@@ -49,6 +57,10 @@ class AddExerciseFragment : Fragment() {
         binding.exerciseListView.adapter = exerciseListAdapter
         exerciseListAdapter.attachStore(viewModel)
         binding.swipeRefresh.setOnRefreshListener { viewModel.fetchListOfExercises(true) }
+        binding.addExerciseFilterButton.setOnClickListener {
+            val extras = FragmentNavigatorExtras(it to "sharedElementContainer")
+            findNavController().navigate(R.id.action_addExerciseFragment_to_exerciseFiltersFragment, null, null, extras)
+        }
         observeLiveData()
     }
 

@@ -2,7 +2,7 @@ package com.hitenderpannu.workout.di.add_exercise
 
 import com.hitenderpannu.workout.di.AddExerciseScope
 import com.hitenderpannu.workout.di.workout.WorkoutComponent
-import com.hitenderpannu.workout.ui.addExercise.AddExerciseFragment
+import com.hitenderpannu.workout.ui.add_exercise.AddExerciseFragment
 import dagger.Component
 
 @AddExerciseScope
