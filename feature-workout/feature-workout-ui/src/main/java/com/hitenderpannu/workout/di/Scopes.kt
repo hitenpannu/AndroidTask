@@ -16,4 +16,8 @@ annotation class AddExerciseScope
 
 @Scope
 @Retention(AnnotationRetention.SOURCE)
-annotation class ExerciseFilter
+annotation class ExerciseFilterScope
+
+@Scope
+@Retention(AnnotationRetention.SOURCE)
+annotation class NewWorkoutScope

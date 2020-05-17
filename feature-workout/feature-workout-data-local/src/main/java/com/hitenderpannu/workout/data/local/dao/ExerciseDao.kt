@@ -18,6 +18,10 @@ interface ExerciseDao {
     @Query("SELECT * FROM $TABLE_EXERCISE")
     fun getAll(): List<ExerciseWithBodyPartsAndEquipments>
 
+    @Transaction
+    @Query("SELECT * FROM $TABLE_EXERCISE WHERE exerciseId=:id LIMIT 1")
+    fun getExerciseWhere(id:String): ExerciseWithBodyPartsAndEquipments
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertExercise(exercise: ExerciseEntity)
 

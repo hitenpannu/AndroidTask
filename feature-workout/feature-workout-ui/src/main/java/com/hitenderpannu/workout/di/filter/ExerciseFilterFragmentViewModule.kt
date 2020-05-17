@@ -2,7 +2,7 @@ package com.hitenderpannu.workout.di.filter
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hitenderpannu.workout.di.ExerciseFilter
+import com.hitenderpannu.workout.di.ExerciseFilterScope
 import com.hitenderpannu.workout.domain.ExerciseListInteractor
 import com.hitenderpannu.workout.ui.exercise_filters.ExerciseFilterFragmentViewModel
 import com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment
@@ -12,7 +12,7 @@ import dagger.Provides
 @Module
 class ExerciseFilterFragmentViewModule(private val fragment: ExerciseFiltersFragment) {
 
-    @ExerciseFilter
+    @ExerciseFilterScope
     @Provides
     fun provideViewModelFactory(exerciseListInteractor: ExerciseListInteractor): ViewModelProvider.Factory {
         return object : ViewModelProvider.Factory {

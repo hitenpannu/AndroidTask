@@ -4,6 +4,7 @@ import com.hitenderpannu.base.di.CoreComponent
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.workout.di.WorkoutScope
 import com.hitenderpannu.workout.domain.ExerciseListInteractor
+import com.hitenderpannu.workout.domain.WorkoutInteractor
 import com.hitenderpannu.workout.domain.local_repo.LocalExerciseRepo
 import dagger.Component
 import retrofit2.Retrofit
@@ -16,6 +17,8 @@ import retrofit2.Retrofit
 interface WorkoutComponent {
 
     fun provideLocalExerciseRepo(): LocalExerciseRepo
+
+    fun provideWorkoutInteractor(): WorkoutInteractor
 
     fun provideNetworkConnectionChecker(): NetworkConnectionChecker
 

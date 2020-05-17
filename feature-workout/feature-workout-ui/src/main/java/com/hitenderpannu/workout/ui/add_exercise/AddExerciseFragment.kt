@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import com.hitenderpannu.feature_dashboard_ui.R
 import com.hitenderpannu.feature_dashboard_ui.databinding.FragmentAddExerciseBinding
 import com.hitenderpannu.workout.di.DaggerManager
 import com.hitenderpannu.workout.entity.Exercise
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
 import javax.inject.Inject
 
 class AddExerciseFragment : Fragment() {
@@ -61,6 +63,9 @@ class AddExerciseFragment : Fragment() {
             val extras = FragmentNavigatorExtras(it to "sharedElementContainer")
             findNavController().navigate(R.id.action_addExerciseFragment_to_exerciseFiltersFragment, null, null, extras)
         }
+        binding.addExerciseNextButton.setOnClickListener {
+            viewModel.createNewWorkout()
+        }
         observeLiveData()
     }
 
@@ -69,6 +74,7 @@ class AddExerciseFragment : Fragment() {
         viewModel.exerciseListProgress.observe(viewLifecycleOwner, progressObserver)
         viewModel.exerciseList.observe(viewLifecycleOwner, exerciseListObserver)
         viewModel.numberOfFiltersApplied.observe(viewLifecycleOwner, appliedFilterCountObserver)
+        viewModel.newWorkoutIdAvailable.observe(viewLifecycleOwner, newWorkoutIdObserver)
     }
 
     private val progressObserver = Observer<Boolean> { show ->
@@ -94,5 +100,12 @@ class AddExerciseFragment : Fragment() {
 
     private val appliedFilterCountObserver = Observer<Int> { count ->
         binding.appliedFiltersCount.text = count.toString()
+    }
+
+    private val newWorkoutIdObserver = Observer<Long?> { id ->
+        if (id != null) {
+            val bundle = bundleOf(NewWorkoutFragment.KEY_WORKOUT_ID to id)
+            findNavController().navigate(R.id.action_addExerciseFragment_to_newWorkoutFragment, bundle)
+        }
     }
 }

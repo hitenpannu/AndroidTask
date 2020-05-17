@@ -5,12 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hitenderpannu.workout.domain.ApplyFilterListener
 import com.hitenderpannu.workout.domain.ExerciseListInteractor
+import com.hitenderpannu.workout.domain.WorkoutInteractor
 import com.hitenderpannu.workout.entity.Exercise
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AddExerciseFragmentViewModel(private val exerciseListInteractor: ExerciseListInteractor) :
+class AddExerciseFragmentViewModel(
+    private val exerciseListInteractor: ExerciseListInteractor,
+    private val workoutInteractor: WorkoutInteractor
+) :
     ViewModel(), SelectedExerciseStore, ApplyFilterListener {
 
     init {
@@ -29,6 +33,9 @@ class AddExerciseFragmentViewModel(private val exerciseListInteractor: ExerciseL
 
     private val mutableNumberOfFiltersApplied = MutableLiveData<Int>()
     val numberOfFiltersApplied: LiveData<Int> = mutableNumberOfFiltersApplied
+
+    private val mutableNewWorkoutId = MutableLiveData<Long>()
+    val newWorkoutIdAvailable: LiveData<Long> = mutableNewWorkoutId
 
     private val listOfSelectedExercises = mutableListOf<Exercise>()
 
@@ -51,6 +58,21 @@ class AddExerciseFragmentViewModel(private val exerciseListInteractor: ExerciseL
             } catch (error: Throwable) {
                 mutableErrorMessage.postValue(error.message)
             } finally {
+                mutableExerciseListProgress.postValue(false)
+            }
+        }
+    }
+
+    fun createNewWorkout() {
+        CoroutineScope(Dispatchers.IO).launch {
+            mutableExerciseListProgress.postValue(true)
+            try {
+                val newWorkoutId = workoutInteractor.createNewWorkout(listOfSelectedExercises)
+                mutableNewWorkoutId.postValue(newWorkoutId)
+            } catch (error: Throwable) {
+                mutableErrorMessage.postValue(error.message)
+            } finally {
+                mutableNewWorkoutId.postValue(null)
                 mutableExerciseListProgress.postValue(false)
             }
         }

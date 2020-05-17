@@ -10,4 +10,12 @@
     <string name="label_equipments">Equipments</string>
     <string name="label_filter">Filter</string>
     <string name="action_apply">Apply</string>
+    <string name="label_new_workout">New Workout</string>
+    <string name="action_finish">Finish</string>
+    <string name="label_unfinished_workout">"You have unfinished workout "</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_mark_as_complete">Mark As Complete</string>
+    <string name="action_add_set">Add Set</string>
+    <string name="sign_multiplication">*</string>
+    <string name="label_reps">Reps</string>
 </resources>

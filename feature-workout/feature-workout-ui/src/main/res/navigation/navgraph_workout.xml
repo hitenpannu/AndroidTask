@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_addExerciseFragment"
             app:destination="@id/addExerciseFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_newWorkoutFragment"
+            app:destination="@id/newWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
@@ -22,14 +25,19 @@
         <action
             android:id="@+id/action_addExerciseFragment_to_exerciseFiltersFragment"
             app:destination="@id/exerciseFiltersFragment" />
+        <action
+            android:id="@+id/action_addExerciseFragment_to_newWorkoutFragment"
+            app:destination="@id/newWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseFiltersFragment"
         android:name="com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment"
         android:label="fragment_filters"
         tools:layout="@layout/fragment_filters" >
-        <action
-            android:id="@+id/action_exerciseFiltersFragment_to_addExerciseFragment2"
-            app:destination="@id/addExerciseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newWorkoutFragment"
+        android:name="com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment"
+        android:label="fragment_new_workout"
+        tools:layout="@layout/fragment_new_workout" />
 </navigation>

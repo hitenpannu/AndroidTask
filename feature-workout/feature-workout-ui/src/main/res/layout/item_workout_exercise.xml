@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/exerciseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size8"
+            android:paddingTop="@dimen/size8"
+            android:paddingRight="@dimen/size8"
+            android:paddingBottom="@dimen/size4"
+            android:textColor="@color/gunmetal"
+            android:textSize="@dimen/text16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bicep Curl" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bodyParts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size8"
+            android:paddingTop="@dimen/size8"
+            android:paddingRight="@dimen/size8"
+            android:paddingBottom="@dimen/size4"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/text12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseName"
+            tools:text="Bicep Curl" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/equipments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size8"
+            android:paddingTop="@dimen/size8"
+            android:paddingRight="@dimen/size8"
+            android:paddingBottom="@dimen/size4"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/text12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyParts"
+            tools:text="Bicep Curl" />
+
+        <View
+            android:id="@+id/exerciseDivider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/size4"
+            android:alpha="0.5"
+            android:background="@color/charcoal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/equipments" />
+
+        <LinearLayout
+            android:id="@+id/setsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseDivider" />
+
+        <View
+            android:id="@+id/exerciseDivider2"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:alpha="0.5"
+            android:background="@color/charcoal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setsContainer" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addSetButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/action_add_set"
+            android:textAllCaps="false"
+            android:textColor="@color/blush"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setsContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

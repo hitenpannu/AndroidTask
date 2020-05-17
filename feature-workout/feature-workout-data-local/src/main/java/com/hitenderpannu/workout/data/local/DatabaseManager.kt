@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.hitenderpannu.workout.data.local.dao.BodyPartsDao
 import com.hitenderpannu.workout.data.local.dao.EquipmentsDao
 import com.hitenderpannu.workout.data.local.dao.ExerciseDao
+import com.hitenderpannu.workout.data.local.dao.WorkoutDao
 
 class DatabaseManager(applicationContext: Context) {
 
@@ -13,4 +14,5 @@ class DatabaseManager(applicationContext: Context) {
     fun provideExerciseDao(): ExerciseDao = db.exerciseDao()
     fun provideBodyPartsDao(): BodyPartsDao = db.bodyPartsDao()
     fun provideEquipmentsDao(): EquipmentsDao = db.equipmentsDao()
+    fun provideWorkoutDao(): WorkoutDao = db.workoutDao()
 }

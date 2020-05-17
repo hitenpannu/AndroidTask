@@ -7,4 +7,6 @@ interface LocalExerciseRepo {
     suspend fun getAllExercises(): List<Exercise>
 
     suspend fun insertExercises(list: List<Exercise>)
+
+    suspend fun getExerciseWithBodyPartsAndEquipment(id: String): Exercise
 }
