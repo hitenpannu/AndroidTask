@@ -67,7 +67,6 @@ class NewWorkoutFragmentViewModel(private val workoutInteractor: WorkoutInteract
                 try {
                     workoutInteractor.finishWorkout(workoutId)
                     mutableFinishListener.postValue(true)
-                    mutableFinishListener.postValue(false)
                 } catch (error: Throwable) {
                     mutableErrorMessage.postValue(error.message)
                 } finally {
@@ -75,5 +74,9 @@ class NewWorkoutFragmentViewModel(private val workoutInteractor: WorkoutInteract
                 }
             }
         }
+    }
+
+    fun clearFinishLiveData() {
+        mutableFinishListener.postValue(false)
     }
 }

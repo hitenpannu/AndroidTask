@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lastWorkoutSummaryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size8"
+                android:text="@string/label_last_workout_summary"
+                android:textColor="@color/gunmetal"
+                android:textSize="@dimen/size16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/focusedBodyPartsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size8"
+                android:text="@string/label_focused_body_parts"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/text12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lastWorkoutSummaryLabel" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/focusedBodyPartsContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/size8"
+                android:layout_marginLeft="@dimen/size8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/focusedBodyPartsLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/weightLiftedInLastWorkoutLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/size8"
+                android:text="@string/label_weight_lifted"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/text12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/setsInLastWorkoutLabel"
+                app:layout_constraintTop_toBottomOf="@+id/focusedBodyPartsContainer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/weightLiftedInLastWorkout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/size8"
+                android:textColor="@color/light_charcoal"
+                android:textSize="@dimen/text12"
+                app:layout_constraintLeft_toLeftOf="@+id/weightLiftedInLastWorkoutLabel"
+                app:layout_constraintRight_toRightOf="@+id/weightLiftedInLastWorkoutLabel"
+                app:layout_constraintTop_toBottomOf="@+id/weightLiftedInLastWorkoutLabel"
+                tools:text="100kg" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/setsInLastWorkoutLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/size8"
+                android:text="@string/label_sets"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/text12"
+                app:layout_constraintLeft_toRightOf="@+id/weightLiftedInLastWorkoutLabel"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/focusedBodyPartsContainer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/setsInLastWorkout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/size8"
+                android:textColor="@color/light_charcoal"
+                android:textSize="@dimen/text12"
+                app:layout_constraintLeft_toLeftOf="@+id/setsInLastWorkoutLabel"
+                app:layout_constraintRight_toRightOf="@+id/setsInLastWorkoutLabel"
+                app:layout_constraintTop_toBottomOf="@+id/setsInLastWorkoutLabel"
+                tools:text="100kg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

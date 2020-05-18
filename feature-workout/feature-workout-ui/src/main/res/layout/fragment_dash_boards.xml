@@ -1,162 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
-    android:fillViewport="true"
-    android:orientation="vertical"
     android:paddingTop="@dimen/status_bar_height"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hitenderpannu.workout.ui.dashboard.DashBoardFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/size16"
-            android:text="@string/label_dashboard"
-            android:textColor="@color/gunmetal"
-            android:textSize="@dimen/text22"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/dashboardUserAvatar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/dashboardUserAvatar" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/dashboardUserAvatar"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:layout_margin="@dimen/size16"
-            android:padding="@dimen/size8"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_social"
-            app:tint="@color/gunmetal" />
-
-        <include
-            android:id="@+id/dashboardHeader"
-            layout="@layout/layout_dashboard_header" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/noWorkoutsAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size26"
-            android:layout_marginEnd="@dimen/size26"
-            android:gravity="center"
-            android:text="@string/message_no_workouts"
-            android:textColor="@color/charcoal"
-            app:layout_constraintBottom_toBottomOf="@+id/createFirstWorkoutButton"
-            app:layout_constraintLeft_toLeftOf="@+id/dashboardHeader"
-            app:layout_constraintRight_toRightOf="@+id/dashboardHeader"
-            app:layout_constraintTop_toBottomOf="@+id/dashboardHeader" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/createFirstWorkoutButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size26"
-            android:layout_marginEnd="@dimen/size26"
-            android:background="@drawable/create_first_workout_background"
-            android:gravity="center"
-            android:paddingStart="@dimen/size20"
-            android:paddingEnd="@dimen/size20"
-            android:text="@string/action_create_workout"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/noWorkoutsAvailable"
-            app:layout_constraintRight_toRightOf="@+id/noWorkoutsAvailable"
-            app:layout_constraintTop_toBottomOf="@+id/noWorkoutsAvailable" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/noWorkoutsGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="createFirstWorkoutButton, noWorkoutsAvailable" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/unFinishedWorkoutCard"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:cardBackgroundColor="@color/white"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboardHeader">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size16"
+                android:text="@string/label_dashboard"
+                android:textColor="@color/gunmetal"
+                android:textSize="@dimen/text22"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/dashboardUserAvatar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dashboardUserAvatar" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dashboardUserAvatar"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="@dimen/size16"
+                android:padding="@dimen/size8"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_social"
+                app:tint="@color/gunmetal" />
+
+            <include
+                android:id="@+id/dashboardHeader"
+                layout="@layout/layout_dashboard_header" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/noWorkoutsAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size26"
+                android:layout_marginEnd="@dimen/size26"
+                android:gravity="center"
+                android:text="@string/message_no_workouts"
+                android:textColor="@color/charcoal"
+                app:layout_constraintBottom_toBottomOf="@+id/createFirstWorkoutButton"
+                app:layout_constraintLeft_toLeftOf="@+id/dashboardHeader"
+                app:layout_constraintRight_toRightOf="@+id/dashboardHeader"
+                app:layout_constraintTop_toBottomOf="@+id/dashboardHeader" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/createFirstWorkoutButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size26"
+                android:layout_marginEnd="@dimen/size26"
+                android:background="@drawable/create_first_workout_background"
+                android:gravity="center"
+                android:paddingStart="@dimen/size20"
+                android:paddingEnd="@dimen/size20"
+                android:text="@string/action_create_workout"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/noWorkoutsAvailable"
+                app:layout_constraintRight_toRightOf="@+id/noWorkoutsAvailable"
+                app:layout_constraintTop_toBottomOf="@+id/noWorkoutsAvailable" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/noWorkoutsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="createFirstWorkoutButton, noWorkoutsAvailable" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/unFinishedWorkoutCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dashboardHeader">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/labelUnfinishedWorkout"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/size16"
-                    android:text="@string/label_unfinished_workout"
-                    android:textColor="@color/gunmetal"
-                    android:textSize="@dimen/text14"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent">
 
-                <View
-                    android:id="@+id/unfinishedActionDividerTop"
-                    android:layout_width="0dp"
-                    android:layout_height="0.5dp"
-                    android:alpha="0.5"
-                    android:background="@color/light_charcoal"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelUnfinishedWorkout" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/labelUnfinishedWorkout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/size16"
+                        android:text="@string/label_unfinished_workout"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="@dimen/text14"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/actionContinue"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:text="@string/action_continue"
-                    android:textAllCaps="false"
-                    android:textColor="@color/charcoal"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/actionMarkAsComplete"
-                    app:layout_constraintTop_toBottomOf="@+id/labelUnfinishedWorkout" />
+                    <View
+                        android:id="@+id/unfinishedActionDividerTop"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:alpha="0.5"
+                        android:background="@color/light_charcoal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/labelUnfinishedWorkout" />
 
-                <View
-                    android:id="@+id/unfinishedActionDivider"
-                    android:layout_width="0.5dp"
-                    android:layout_height="0dp"
-                    android:alpha="0.5"
-                    android:background="@color/light_charcoal"
-                    app:layout_constraintBottom_toBottomOf="@+id/actionMarkAsComplete"
-                    app:layout_constraintLeft_toRightOf="@+id/actionContinue"
-                    app:layout_constraintRight_toLeftOf="@+id/actionMarkAsComplete"
-                    app:layout_constraintTop_toBottomOf="@id/labelUnfinishedWorkout" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/actionContinue"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:text="@string/action_continue"
+                        android:textAllCaps="false"
+                        android:textColor="@color/charcoal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/actionMarkAsComplete"
+                        app:layout_constraintTop_toBottomOf="@+id/labelUnfinishedWorkout" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/actionMarkAsComplete"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:text="@string/action_mark_as_complete"
-                    android:textAllCaps="false"
-                    android:textColor="@color/charcoal"
-                    app:layout_constraintLeft_toRightOf="@+id/actionContinue"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/labelUnfinishedWorkout" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <View
+                        android:id="@+id/unfinishedActionDivider"
+                        android:layout_width="0.5dp"
+                        android:layout_height="0dp"
+                        android:alpha="0.5"
+                        android:background="@color/light_charcoal"
+                        app:layout_constraintBottom_toBottomOf="@+id/actionMarkAsComplete"
+                        app:layout_constraintLeft_toRightOf="@+id/actionContinue"
+                        app:layout_constraintRight_toLeftOf="@+id/actionMarkAsComplete"
+                        app:layout_constraintTop_toBottomOf="@id/labelUnfinishedWorkout" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/actionMarkAsComplete"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:text="@string/action_mark_as_complete"
+                        android:textAllCaps="false"
+                        android:textColor="@color/charcoal"
+                        app:layout_constraintLeft_toRightOf="@+id/actionContinue"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/labelUnfinishedWorkout" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-</androidx.core.widget.NestedScrollView>
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="unFinishedWorkoutCard, dashboardHeader" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/startNewWorkoutCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/size8"
+                app:layout_constraintTop_toBottomOf="@+id/barrier">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/readyForNewWorkoutLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/size8"
+                        android:text="@string/label_ready_for_new_workout"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/startNewWorkoutButton"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/startNewWorkoutButton"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:text="@string/action_start"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blush"
+                        app:layout_constraintBottom_toBottomOf="@+id/readyForNewWorkoutLabel"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/readyForNewWorkoutLabel" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.hitenderpannu.workout.ui.WorkoutShortSummary
+                android:id="@+id/previousWorkoutAnalysis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startNewWorkoutCard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

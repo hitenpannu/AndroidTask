@@ -46,6 +46,11 @@ class WorkoutInteractorImpl(
         )
     }
 
+    override suspend fun getPreviousWorkout(): WorkoutWithExercises? {
+        val workout = localWorkoutRepo.getPreviousWorkout()
+        return workout?.let { getWorkout(workout.workoutId) }
+    }
+
     override suspend fun getUnFinishedWorkout(): Workout? {
         return localWorkoutRepo.getUnfinishedWorkout() ?: return null
     }

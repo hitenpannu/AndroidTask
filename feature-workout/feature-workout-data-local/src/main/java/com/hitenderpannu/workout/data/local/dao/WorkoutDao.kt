@@ -11,6 +11,7 @@ import com.hitenderpannu.workout.data.local.entities.SetEntity
 import com.hitenderpannu.workout.data.local.entities.WorkoutEntity
 import com.hitenderpannu.workout.data.local.entities.WorkoutExerciseCrossRef
 import com.hitenderpannu.workout.data.local.entities.WorkoutWithExercise
+import com.hitenderpannu.workout.entity.Workout
 
 @Dao
 interface WorkoutDao {
@@ -42,4 +43,8 @@ interface WorkoutDao {
 
     @RawQuery
     fun updateData(updateQuery: SimpleSQLiteQuery): Int
+
+    @Transaction
+    @Query("SELECT * FROM ${WorkoutEntity.TABLE_NAME} WHERE isFinished=1 ORDER BY createdAt DESC LIMIT 1")
+    fun getPreviouslyClosedWorkout(): WorkoutEntity?
 }

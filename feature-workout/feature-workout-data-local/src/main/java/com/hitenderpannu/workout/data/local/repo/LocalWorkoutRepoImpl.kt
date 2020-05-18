@@ -89,4 +89,8 @@ class LocalWorkoutRepoImpl(
         val updateQuery = SimpleSQLiteQuery("UPDATE ${WorkoutEntity.TABLE_NAME} SET isFinished=1 WHERE id=$workoutId")
         workoutDao.updateData(updateQuery)
     }
+
+    override suspend fun getPreviousWorkout(): Workout? {
+        return workoutDao.getPreviouslyClosedWorkout()?.run { Workout(id, this.createdAt, this.isFinished) }
+    }
 }

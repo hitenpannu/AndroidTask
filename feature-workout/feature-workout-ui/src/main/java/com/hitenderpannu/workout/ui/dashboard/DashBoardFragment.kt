@@ -16,6 +16,7 @@ import com.hitenderpannu.feature_dashboard_ui.R
 import com.hitenderpannu.feature_dashboard_ui.databinding.FragmentDashBoardsBinding
 import com.hitenderpannu.workout.di.DaggerManager
 import com.hitenderpannu.workout.entity.Workout
+import com.hitenderpannu.workout.entity.WorkoutWithExercises
 import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
 import javax.inject.Inject
 
@@ -43,10 +44,18 @@ class DashBoardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.fetchUpdatedData()
+        }
         binding.createFirstWorkoutButton.setOnClickListener {
             findNavController().navigate(R.id.action_dashBoardFragment_to_addExerciseFragment)
         }
+        binding.startNewWorkoutButton.setOnClickListener {
+            findNavController().navigate(R.id.action_dashBoardFragment_to_addExerciseFragment)
+        }
         viewModel.unFinishedWorkout.observe(viewLifecycleOwner, unfinishedWorkoutObserver)
+        viewModel.previousWorkout.observe(viewLifecycleOwner, previousWorkoutObserver)
+        viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
     }
 
     private val unfinishedWorkoutObserver = Observer<Workout?> { workout ->
@@ -56,6 +65,21 @@ class DashBoardFragment : BaseFragment() {
                 val bundle = bundleOf(NewWorkoutFragment.KEY_WORKOUT_ID to workout.workoutId)
                 findNavController().navigate(R.id.action_dashBoardFragment_to_newWorkoutFragment, bundle)
             }
+        }
+    }
+
+    private val previousWorkoutObserver = Observer<WorkoutWithExercises?> { previousWorkout ->
+        binding.previousWorkoutAnalysis.isVisible = previousWorkout != null
+        binding.noWorkoutsGroup.isVisible = previousWorkout == null
+        binding.startNewWorkoutCard.isVisible = previousWorkout != null
+        if (previousWorkout != null) {
+            binding.previousWorkoutAnalysis.showAnalysisFor(previousWorkout)
+        }
+    }
+
+    private val progressObserver = Observer<Boolean> {
+        if (binding.swipeRefresh.isRefreshing && !it) {
+            binding.swipeRefresh.post { binding.swipeRefresh.isRefreshing = false }
         }
     }
 }

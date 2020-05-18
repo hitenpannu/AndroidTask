@@ -71,7 +71,7 @@ class NewWorkoutFragment : Fragment() {
 
     private val loadingProgressObserver = Observer<Boolean> {
         binding.exerciseListView.isVisible = !it
-        if(it) binding.progress.show() else binding.progress.hide()
+        if (it) binding.progress.show() else binding.progress.hide()
     }
 
     private val errorObserver = Observer<String?> {
@@ -91,7 +91,8 @@ class NewWorkoutFragment : Fragment() {
     private val finishCompleteObserver = Observer<Boolean> {
         if (it) {
             binding.finishButton.visibility = View.GONE
-            findNavController().popBackStack()
+            findNavController().popBackStack(R.id.dashBoardFragment, false)
+            viewModel.clearFinishLiveData()
         }
     }
 }

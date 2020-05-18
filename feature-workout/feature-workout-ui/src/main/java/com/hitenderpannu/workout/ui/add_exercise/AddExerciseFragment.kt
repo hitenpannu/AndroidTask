@@ -57,7 +57,7 @@ class AddExerciseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.exerciseListView.layoutManager = LinearLayoutManager(view.context)
         binding.exerciseListView.adapter = exerciseListAdapter
-        exerciseListAdapter.attachStore(viewModel)
+        exerciseListAdapter.attachSelectedExerciseStore(viewModel)
         binding.swipeRefresh.setOnRefreshListener { viewModel.fetchListOfExercises(true) }
         binding.addExerciseFilterButton.setOnClickListener {
             val extras = FragmentNavigatorExtras(it to "sharedElementContainer")
@@ -65,6 +65,9 @@ class AddExerciseFragment : Fragment() {
         }
         binding.addExerciseNextButton.setOnClickListener {
             viewModel.createNewWorkout()
+        }
+        binding.addExerciseCloseButton.setOnClickListener {
+            findNavController().popBackStack()
         }
         observeLiveData()
     }
@@ -106,6 +109,7 @@ class AddExerciseFragment : Fragment() {
         if (id != null) {
             val bundle = bundleOf(NewWorkoutFragment.KEY_WORKOUT_ID to id)
             findNavController().navigate(R.id.action_addExerciseFragment_to_newWorkoutFragment, bundle)
+            viewModel.clearWorkoutId()
         }
     }
 }

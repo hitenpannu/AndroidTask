@@ -72,7 +72,6 @@ class AddExerciseFragmentViewModel(
             } catch (error: Throwable) {
                 mutableErrorMessage.postValue(error.message)
             } finally {
-                mutableNewWorkoutId.postValue(null)
                 mutableExerciseListProgress.postValue(false)
             }
         }
@@ -92,5 +91,9 @@ class AddExerciseFragmentViewModel(
 
     override fun onFilterApplied() {
         fetchListOfExercises()
+    }
+
+    fun clearWorkoutId() {
+        mutableNewWorkoutId.postValue(null)
     }
 }

@@ -22,7 +22,7 @@ class AddExerciseListAdapter(
         notifyDataSetChanged()
     }
 
-    fun attachStore(selectedExerciseStore: SelectedExerciseStore) {
+    fun attachSelectedExerciseStore(selectedExerciseStore: SelectedExerciseStore) {
         store = selectedExerciseStore
     }
 

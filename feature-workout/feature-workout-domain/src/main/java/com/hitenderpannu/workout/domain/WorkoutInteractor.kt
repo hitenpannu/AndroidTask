@@ -23,4 +23,6 @@ interface WorkoutInteractor {
     suspend fun updateWeight(setId: Long, newWeight: Double)
 
     suspend fun finishWorkout(workoutId: Long)
+
+    suspend fun getPreviousWorkout(): WorkoutWithExercises?
 }
