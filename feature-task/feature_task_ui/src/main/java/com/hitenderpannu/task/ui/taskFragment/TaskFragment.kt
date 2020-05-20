@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.hitenderpannu.task.entity.Task
 import com.hitenderpannu.task.ui.databinding.FragmentTaskBinding
@@ -37,13 +39,32 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.taskListView?.layoutManager = LinearLayoutManager(context)
-        binding?.taskListView?.adapter = taskListAdapter
+        binding?.taskListView?.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = taskListAdapter
+            ItemTouchHelper(getTaskTouchHelper).attachToRecyclerView(this)
+        }
         binding?.addNewTask?.onSubmittingTaskDescription { viewModel.submittingNewTaskDescription(it) }
         taskListAdapter.attachCallbackListener(viewModel)
         viewModel.liveTaskList().observe(viewLifecycleOwner, listObserver)
         viewModel.liveProgress().observe(viewLifecycleOwner, progressObserver)
         viewModel.liveError().observe(viewLifecycleOwner, errorObserver)
+    }
+
+    private val getTaskTouchHelper by lazy {
+        val dragDirections = ItemTouchHelper.UP.or(ItemTouchHelper.DOWN)
+        val swipeDirection = ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)
+        object : ItemTouchHelper.SimpleCallback(dragDirections, swipeDirection) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                val fromPosition = viewHolder.adapterPosition
+                val targetPosition = target.adapterPosition
+                taskListAdapter.moveItem(fromPosition, targetPosition)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            }
+        }
     }
 
     private val listObserver = Observer<List<Task>> {

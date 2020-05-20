@@ -8,7 +8,7 @@ import com.hitenderpannu.task.entity.Task
 import com.hitenderpannu.task.ui.databinding.ItemTaskBinding
 
 class TaskListAdapter(
-    private var taskList: List<Task> = listOf()
+    private var taskList: MutableList<Task> = mutableListOf()
 ) : RecyclerView.Adapter<TaskListAdapter.TaskListViewHolder>() {
 
     enum class ViewType(val value: Int) {
@@ -48,8 +48,16 @@ class TaskListAdapter(
 
     /* TODO use Diff utils to update only required views */
     fun updateTaskList(newList: List<Task>) {
-        taskList = newList
+        taskList.clear()
+        taskList.addAll(newList)
         notifyDataSetChanged()
+    }
+
+    fun moveItem(fromPosition: Int, targetPosition: Int) {
+        val fromItem = taskList[fromPosition]
+        taskList.removeAt(fromPosition)
+        taskList.add(targetPosition, fromItem)
+        notifyItemMoved(fromPosition, targetPosition)
     }
 
     sealed class TaskListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
