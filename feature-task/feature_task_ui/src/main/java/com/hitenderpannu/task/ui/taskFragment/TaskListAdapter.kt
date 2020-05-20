@@ -60,6 +60,15 @@ class TaskListAdapter(
         notifyItemMoved(fromPosition, targetPosition)
     }
 
+    fun getItemDataAt(adapterPosition: Int): Task {
+        return taskList[adapterPosition]
+    }
+
+    fun removeItemAt(adapterPosition: Int) {
+        taskList.removeAt(adapterPosition)
+        notifyItemRemoved(adapterPosition)
+    }
+
     sealed class TaskListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         class TaskItemViewHolder(private val binding: ItemTaskBinding) : TaskListViewHolder(binding.root) {
             fun bind(task: Task, statusChangeCallback: (Boolean) -> Unit) {

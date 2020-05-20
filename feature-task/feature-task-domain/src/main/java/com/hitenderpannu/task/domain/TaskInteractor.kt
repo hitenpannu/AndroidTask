@@ -15,4 +15,6 @@ interface TaskInteractor {
     suspend fun getTask(taskId: String): Task
 
     suspend fun getAllPendingTasks(): List<Task>
+
+    suspend fun deleteTask(task: Task)
 }

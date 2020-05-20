@@ -71,4 +71,14 @@ class TaskFragmentViewModel(
             }
         }
     }
+
+    fun deleteTask(task: Task) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                taskInteractor.deleteTask(task)
+            } catch (error: Throwable) {
+                mutableError.postValue(error.message ?: "Something went wrong")
+            }
+        }
+    }
 }

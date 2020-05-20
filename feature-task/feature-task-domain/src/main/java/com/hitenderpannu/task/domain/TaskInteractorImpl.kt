@@ -31,4 +31,8 @@ class TaskInteractorImpl(
     override suspend fun getAllPendingTasks(): List<Task> {
         return localTaskRepo.getAllPendingTasks()
     }
+
+    override suspend fun deleteTask(task: Task) {
+        localTaskRepo.deleteTask(task)
+    }
 }

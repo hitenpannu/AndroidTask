@@ -53,7 +53,7 @@ class TaskFragment : Fragment() {
 
     private val getTaskTouchHelper by lazy {
         val dragDirections = ItemTouchHelper.UP.or(ItemTouchHelper.DOWN)
-        val swipeDirection = ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)
+        val swipeDirection = ItemTouchHelper.RIGHT
         object : ItemTouchHelper.SimpleCallback(dragDirections, swipeDirection) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 val fromPosition = viewHolder.adapterPosition
@@ -63,6 +63,11 @@ class TaskFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                if(viewHolder is TaskListAdapter.TaskListViewHolder.TaskItemViewHolder) {
+                    val task = taskListAdapter.getItemDataAt(viewHolder.adapterPosition)
+                    viewModel.deleteTask(task)
+                    taskListAdapter.removeItemAt(viewHolder.adapterPosition)
+                }
             }
 
             override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
