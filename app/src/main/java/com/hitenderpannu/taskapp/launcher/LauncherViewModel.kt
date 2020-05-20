@@ -15,7 +15,7 @@ class LauncherViewModel(
     }
 
     fun checkIfUserIsLoggedIn() {
-        if (!userPreferences.isUserLoggedIn()) {
+        if (!userPreferences.isUserLoggedIn() && userPreferences.guestUserId == null) {
             authRouter.startAuth()
         } else {
             homeRouter.startHome(finishCurrent = true)

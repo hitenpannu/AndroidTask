@@ -9,7 +9,11 @@
         android:id="@+id/workout"
         android:name="com.hitenderpannu.workout.WorkoutContainerFragment"
         android:label="@string/label_workout_creation"
-        app:moduleName=":feature-workout:feature-workout-ui"
         tools:layout="@layout/fragment_workout_container" />
 
+    <fragment
+        android:id="@+id/taskManager"
+        android:name="com.hitenderpannu.task.ui.taskFragment.TaskFragment"
+        android:label="@string/label_tasks"
+        app:targetPackage="com.hitenderpannu.task.ui" />
 </navigation>

@@ -45,6 +45,10 @@ dependencies {
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitConverter
 
+    implementation room.core
+    kapt room.annotationProcessor
+    implementation room.ktx
+
     implementation dagger.core
     kapt dagger.processor
 

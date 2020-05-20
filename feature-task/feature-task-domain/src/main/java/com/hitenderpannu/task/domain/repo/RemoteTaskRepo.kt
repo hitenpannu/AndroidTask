@@ -1,8 +1,8 @@
-package com.hitenderpannu.task.data.network
+package com.hitenderpannu.task.domain.repo
 
 import com.hitenderpannu.task.entity.Task
 
-interface TaskRepo {
+interface RemoteTaskRepo {
 
     suspend fun createTask(description: String, completed: Boolean? = false): Task
 

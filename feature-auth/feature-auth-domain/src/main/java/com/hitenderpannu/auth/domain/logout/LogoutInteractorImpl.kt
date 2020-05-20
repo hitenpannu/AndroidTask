@@ -23,5 +23,6 @@ class LogoutInteractorImpl(
         userPreferences.userName = null
         userPreferences.userEmail = null
         userPreferences.userToken = null
+        userPreferences.guestUserId = null
     }
 }

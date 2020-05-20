@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="@dimen/size4">
+    app:cardBackgroundColor="@color/white"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +17,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/size8"
+            android:textColor="@color/gunmetal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/taskStatus"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Fetch Milk" />
 
-        <androidx.appcompat.widget.AppCompatCheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/taskStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,4 +33,5 @@
             app:layout_constraintTop_toTopOf="@+id/taskDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+
+</com.google.android.material.card.MaterialCardView>

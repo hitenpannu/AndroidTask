@@ -7,8 +7,7 @@ import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
 class DynamicFeatureManager(val activity: Activity) {
@@ -34,49 +33,57 @@ class DynamicFeatureManager(val activity: Activity) {
         return installedFeatures
     }
 
-    suspend fun install(feature: FEATURE): Flow<Result<Pair<String, Int>>> {
+    fun isInstalled(feature: FEATURE): Boolean {
+        return getListOfAvailableFeatures().contains(feature)
+    }
+
+    suspend fun install(feature: FEATURE): Channel<Result<Pair<String, Int>>> {
         val request = SplitInstallRequest.newBuilder()
             .addModule(feature.packageName).build()
 
-        return flow {
-            manager.registerListener { state ->
-                CoroutineScope(Dispatchers.IO).launch {
-                    val message = when (state.status()) {
-                        SplitInstallSessionStatus.CANCELED -> {
-                            "Install Cancelled"
-                        }
-                        SplitInstallSessionStatus.CANCELING -> {
-                            "Installation Cancelled"
-                        }
-                        SplitInstallSessionStatus.DOWNLOADED -> {
-                            "Downloaded"
-                        }
-                        SplitInstallSessionStatus.DOWNLOADING -> {
-                            "Downloading ${(state.bytesDownloaded() * 100).div(state.totalBytesToDownload())}%"
-                        }
-                        SplitInstallSessionStatus.FAILED -> {
-                            "Failed"
-                        }
-                        SplitInstallSessionStatus.INSTALLED -> {
-                            "Installed"
-                        }
-                        SplitInstallSessionStatus.INSTALLING -> {
-                            "Installing"
-                        }
-                        SplitInstallSessionStatus.PENDING -> {
-                            "Pending"
-                        }
-                        SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-                            "Module too big required user confirmation"
-                        }
-                        SplitInstallSessionStatus.UNKNOWN -> {
-                            state.errorCode().toString()
-                        }
-                        else -> ""
+        val channels = Channel<Result<Pair<String, Int>>>()
+
+        manager.registerListener { state ->
+            CoroutineScope(Dispatchers.IO).launch {
+                val message = when (state.status()) {
+                    SplitInstallSessionStatus.CANCELED -> {
+                        "Install Cancelled"
                     }
-                    emit(Result.success(message to state.status()))
+                    SplitInstallSessionStatus.CANCELING -> {
+                        "Installation Cancelled"
+                    }
+                    SplitInstallSessionStatus.DOWNLOADED -> {
+                        "Downloaded"
+                    }
+                    SplitInstallSessionStatus.DOWNLOADING -> {
+                        "Downloading ${(state.bytesDownloaded() * 100).div(state.totalBytesToDownload())}%"
+                    }
+                    SplitInstallSessionStatus.FAILED -> {
+                        "Failed"
+                    }
+                    SplitInstallSessionStatus.INSTALLED -> {
+                        "Installed"
+                    }
+                    SplitInstallSessionStatus.INSTALLING -> {
+                        "Installing"
+                    }
+                    SplitInstallSessionStatus.PENDING -> {
+                        "Pending"
+                    }
+                    SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
+                        "Module too big required user confirmation"
+                    }
+                    SplitInstallSessionStatus.UNKNOWN -> {
+                        state.errorCode().toString()
+                    }
+                    else -> ""
                 }
+                channels.send(Result.success(message to state.status()))
             }
         }
+
+        manager.startInstall(request)
+
+        return channels
     }
 }

@@ -13,6 +13,7 @@ class UserPreferencesImpl(private val context: Context) : UserPreferences {
         private const val USER_EMAIL = "userEmail";
         private const val USER_Id = "userId";
         private const val USER_TOKEN = "userToken";
+        private const val GUEST_USER_ID = "guestUserId";
     }
 
     private val preferences by lazy { context.getSharedPreferences(USER_PREFERENCES_FILE, Context.MODE_PRIVATE) }
@@ -32,4 +33,8 @@ class UserPreferencesImpl(private val context: Context) : UserPreferences {
     override var userToken: String?
         get() = preferences.getString(USER_TOKEN, null)
         set(value) = preferences.edit().putString(USER_TOKEN, value).apply()
+
+    override var guestUserId: String?
+        get() = preferences.getString(GUEST_USER_ID, null)
+        set(value) = preferences.edit().putString( GUEST_USER_ID, value).apply()
 }

@@ -24,5 +24,6 @@ class SignUpInteractorImpl(
         userPreferences.userName = user.name
         userPreferences.userEmail = user.email
         userPreferences.userToken = user.authToken
+        userPreferences.guestUserId = null
     }
 }

@@ -51,6 +51,9 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         startObservingTextChanges()
         startObservingLiveData()
+        binding?.guestLoginButton?.setOnClickListener {
+            viewModel.startGuestLogin()
+        }
         binding?.authButton?.setOnClickListener {
             viewModel.startAuthProcess()
         }

@@ -5,6 +5,7 @@ interface UserPreferences {
     var userName: String?
     var userEmail: String?
     var userToken: String?
+    var guestUserId: String?
 
     fun isUserLoggedIn(): Boolean = userToken != null
 }

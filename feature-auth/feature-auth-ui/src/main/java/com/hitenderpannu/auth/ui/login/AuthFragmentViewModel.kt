@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.hitenderpannu.auth.domain.guest.GuestLoginInteractor
 import com.hitenderpannu.auth.domain.login.LoginInteractor
 import com.hitenderpannu.auth.domain.signup.SignUpInteractor
 import com.hitenderpannu.auth.ui.R
@@ -15,7 +16,8 @@ import kotlin.properties.Delegates
 
 class AuthFragmentViewModel(
     private val loginInteractor: LoginInteractor,
-    private val signUpInteractor: SignUpInteractor
+    private val signUpInteractor: SignUpInteractor,
+    private val guestLoginInteractor: GuestLoginInteractor
 ) : ViewModel() {
 
     private enum class AUTH_MODE {
@@ -117,6 +119,20 @@ class AuthFragmentViewModel(
         }
     }
 
+    fun startGuestLogin() {
+        CoroutineScope(Dispatchers.IO).launch {
+            mutableAuthProgress.postValue(true)
+            try {
+                val loggedInUser = guestLoginInteractor.login()
+                mutableAuthSuccess.postValue(true)
+            } catch (error: Throwable) {
+                mutableAuthError.postValue(error.message ?: "Something went wrong")
+            } finally {
+                mutableAuthProgress.postValue(false)
+            }
+        }
+    }
+
     private fun startLogin() {
         CoroutineScope(Dispatchers.IO).launch {
             mutableAuthProgress.postValue(true)
@@ -146,7 +162,7 @@ class AuthFragmentViewModel(
         }
     }
 
-    private fun allFormFieldsAreValid() : Boolean {
+    private fun allFormFieldsAreValid(): Boolean {
         var allFieldsAreValid = true
         if (selectedAuthMode == AUTH_MODE.SIGN_UP) {
             val userNameError = validateUserName(mutableUserName.value)

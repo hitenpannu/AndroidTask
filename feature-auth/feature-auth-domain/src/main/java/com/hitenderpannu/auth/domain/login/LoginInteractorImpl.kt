@@ -23,5 +23,6 @@ class LoginInteractorImpl(
         userPreferences.userId = user.id
         userPreferences.userEmail = user.email
         userPreferences.userToken = user.authToken
+        userPreferences.guestUserId = null
     }
 }

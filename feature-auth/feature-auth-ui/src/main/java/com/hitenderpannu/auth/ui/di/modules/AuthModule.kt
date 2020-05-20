@@ -3,6 +3,8 @@ package com.hitenderpannu.auth.ui.di.modules
 import com.hitenderpannu.auth.data.network.AuthApi
 import com.hitenderpannu.auth.data.network.AuthRepo
 import com.hitenderpannu.auth.data.network.AuthRepoImpl
+import com.hitenderpannu.auth.domain.guest.GuestLoginInteractor
+import com.hitenderpannu.auth.domain.guest.GuestLoginInteractorImpl
 import com.hitenderpannu.auth.domain.login.LoginInteractor
 import com.hitenderpannu.auth.domain.login.LoginInteractorImpl
 import com.hitenderpannu.auth.domain.signup.SignUpInteractor
@@ -29,6 +31,12 @@ class AuthModule(private val authActivity: AuthActivity) {
 
     @AuthScope
     @Provides
+    fun provideGuestLoginInteractor(userPreferences: UserPreferences): GuestLoginInteractor {
+        return GuestLoginInteractorImpl(userPreferences)
+    }
+
+    @AuthScope
+    @Provides
     fun provideLoginInteractor(
         networkConnectionChecker: NetworkConnectionChecker,
         authRepo: AuthRepo,
@@ -46,6 +54,7 @@ class AuthModule(private val authActivity: AuthActivity) {
     @Provides
     fun provideViewModelFactory(
         loginInteractor: LoginInteractor,
-        signUpInteractor: SignUpInteractor
-    ) = ViewModelFactory(loginInteractor, signUpInteractor)
+        signUpInteractor: SignUpInteractor,
+        guestLoginInteractor: GuestLoginInteractor
+    ) = ViewModelFactory(loginInteractor, signUpInteractor, guestLoginInteractor)
 }

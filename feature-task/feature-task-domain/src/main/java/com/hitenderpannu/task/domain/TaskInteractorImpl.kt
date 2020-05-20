@@ -1,31 +1,34 @@
 package com.hitenderpannu.task.domain
 
-import com.hitenderpannu.common.utils.NetworkConnectionChecker
-import com.hitenderpannu.common.utils.NoInternetConnection
-import com.hitenderpannu.task.data.network.TaskRepo
+import com.hitenderpannu.task.domain.repo.LocalTaskRepo
 import com.hitenderpannu.task.entity.Task
 
 class TaskInteractorImpl(
-    private val networkConnectionChecker: NetworkConnectionChecker,
-    private val taskRepo: TaskRepo
+    private val localTaskRepo: LocalTaskRepo
 ) : TaskInteractor {
     override suspend fun createTask(description: String, completed: Boolean?): Task {
-        if (!networkConnectionChecker.isConnected()) throw NoInternetConnection
-        return taskRepo.createTask(description, completed)
+        return localTaskRepo.createNewTask(description)
     }
 
-    override suspend fun updateTask(taskId: String, description: String?, completed: Boolean?): Task {
-        if (!networkConnectionChecker.isConnected()) throw NoInternetConnection
-        return taskRepo.updateTask(taskId, description, completed)
+    override suspend fun updateTaskDescription(task: Task, newDescription: String): Task {
+        val newTask = task.copy(updatedAt = System.currentTimeMillis(), description = newDescription)
+        return localTaskRepo.updateTask(newTask)
+    }
+
+    override suspend fun toggleCompletionStatus(task: Task): Task {
+        val newTask = task.copy(isCompleted = !task.isCompleted, updatedAt = System.currentTimeMillis())
+        return localTaskRepo.updateTask(newTask)
     }
 
     override suspend fun getAllTasks(): List<Task> {
-        if (!networkConnectionChecker.isConnected()) throw NoInternetConnection
-        return taskRepo.getAllTasks()
+        return localTaskRepo.getAllTasks()
     }
 
     override suspend fun getTask(taskId: String): Task {
-        if (!networkConnectionChecker.isConnected()) throw NoInternetConnection
-        return taskRepo.getTask(taskId)
+        return localTaskRepo.getTaskWhere(taskId)
+    }
+
+    override suspend fun getAllPendingTasks(): List<Task> {
+        return localTaskRepo.getAllPendingTasks()
     }
 }

@@ -3,6 +3,10 @@ package com.hitenderpannu.workout.di.workout
 import android.content.Context
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.workout.data.local.DatabaseManager
+import com.hitenderpannu.workout.data.local.dao.BodyPartsDao
+import com.hitenderpannu.workout.data.local.dao.EquipmentsDao
+import com.hitenderpannu.workout.data.local.dao.ExerciseDao
+import com.hitenderpannu.workout.data.local.dao.WorkoutDao
 import com.hitenderpannu.workout.data.local.repo.LocalBodyPartsRepoImpl
 import com.hitenderpannu.workout.data.local.repo.LocalEquipmentsRepoImpl
 import com.hitenderpannu.workout.data.local.repo.LocalExerciseRepoImpl
@@ -28,28 +32,54 @@ class WorkoutModule(private val applicationContext: Context) {
 
     @WorkoutScope
     @Provides
-    fun provideDatabaseManager() = DatabaseManager(applicationContext)
+    fun provideExerciseDaoProvider(): ExerciseDao {
+        return DatabaseManager.getDatabaseInstance(applicationContext).exerciseDao()
+    }
 
     @WorkoutScope
     @Provides
-    fun provideLocalExerciseRepo(databaseManager: DatabaseManager): LocalExerciseRepo {
+    fun provideBodyPartsDaoProvider(): BodyPartsDao {
+        return DatabaseManager.getDatabaseInstance(applicationContext).bodyPartsDao()
+    }
+
+    @WorkoutScope
+    @Provides
+    fun provideEquipmentsDaoProvider(): EquipmentsDao {
+        return DatabaseManager.getDatabaseInstance(applicationContext).equipmentsDao()
+    }
+
+    @WorkoutScope
+    @Provides
+    fun provideWorkoutDaoProvider(): WorkoutDao {
+        return DatabaseManager.getDatabaseInstance(applicationContext).workoutDao()
+    }
+
+    @WorkoutScope
+    @Provides
+    fun provideLocalExerciseRepo(
+        exerciseDaoProvider: ExerciseDao,
+        bodyPartsDaoProvider: BodyPartsDao,
+        equipmentsDaoProvider: EquipmentsDao
+    ): LocalExerciseRepo {
         return LocalExerciseRepoImpl(
-            databaseManager.provideExerciseDao(),
-            databaseManager.provideBodyPartsDao(),
-            databaseManager.provideEquipmentsDao()
+            exerciseDaoProvider,
+            bodyPartsDaoProvider,
+            equipmentsDaoProvider
         )
     }
 
     @WorkoutScope
     @Provides
-    fun provideLocalBodyPartsRepo(databaseManager: DatabaseManager): LocalBodyPartsRepo {
-        return LocalBodyPartsRepoImpl(databaseManager.provideBodyPartsDao())
+    fun provideLocalBodyPartsRepo(
+        bodyPartsDaoProvider: BodyPartsDao
+    ): LocalBodyPartsRepo {
+        return LocalBodyPartsRepoImpl(bodyPartsDaoProvider)
     }
 
     @WorkoutScope
     @Provides
-    fun provideLocalEquipmentsRepo(databaseManager: DatabaseManager): LocalEquipmentsRepo {
-        return LocalEquipmentsRepoImpl(databaseManager.provideEquipmentsDao())
+    fun provideLocalEquipmentsRepo(equipmentsDaoProvider: EquipmentsDao): LocalEquipmentsRepo {
+        return LocalEquipmentsRepoImpl(equipmentsDaoProvider)
     }
 
     @WorkoutScope
@@ -73,10 +103,13 @@ class WorkoutModule(private val applicationContext: Context) {
 
     @WorkoutScope
     @Provides
-    fun providerWorkoutRepo(databaseManager: DatabaseManager): LocalWorkoutRepo {
+    fun providerWorkoutRepo(
+        exerciseDaoProvider: ExerciseDao,
+        workoutDaoProvider: WorkoutDao
+    ): LocalWorkoutRepo {
         return LocalWorkoutRepoImpl(
-            databaseManager.provideWorkoutDao(),
-            databaseManager.provideExerciseDao()
+            workoutDaoProvider,
+            exerciseDaoProvider
         )
     }
 

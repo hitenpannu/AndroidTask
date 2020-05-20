@@ -14,10 +14,13 @@ include ':feature-task:feature_task_ui',
         ':feature-task:feature-task-entity',
         ':feature-task:feature-task-data-network',
         ':feature-task:feature-task-domain'
+        ':feature-task:feature-task-data-local'
 
 include ':base'
 include ':common-entity'
+
 include ':feature-auth:feature-auth-ui'
+
 include ':feature-workout:feature-workout-ui'
 include ':feature-workout:feature-workout-data-network'
 include ':feature-workout:feature-workout-domain'
