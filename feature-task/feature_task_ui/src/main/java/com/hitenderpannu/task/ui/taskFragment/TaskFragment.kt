@@ -80,6 +80,7 @@ class TaskFragment : Fragment() {
             override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
                 super.clearView(recyclerView, viewHolder)
                 viewHolder.itemView.alpha = 1f
+
             }
         }
     }
