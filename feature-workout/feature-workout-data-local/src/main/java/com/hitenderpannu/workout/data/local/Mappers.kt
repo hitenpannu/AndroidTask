@@ -1,12 +1,12 @@
 package com.hitenderpannu.workout.data.local
 
+import com.hitenderpannu.common.entity.WeightUnit
 import com.hitenderpannu.workout.data.local.entities.ExerciseWithBodyPartsAndEquipments
 import com.hitenderpannu.workout.data.local.entities.SetEntity
 import com.hitenderpannu.workout.entity.BodyPart
 import com.hitenderpannu.workout.entity.Equipment
 import com.hitenderpannu.workout.entity.Exercise
 import com.hitenderpannu.workout.entity.ExerciseSet
-import com.hitenderpannu.workout.entity.WeightUnit
 import java.math.BigDecimal
 
 object Mappers {

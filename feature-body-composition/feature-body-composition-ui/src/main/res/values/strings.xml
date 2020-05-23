@@ -5,4 +5,7 @@
     <string name="label_current_fat_percentage">Current Fat Percentage</string>
     <string name="label_current_muscle_mass">Current Muscle Mass(Kg)</string>
     <string name="action_update">Update</string>
+    <string name="label_total_weight">Total Weight(Kg)</string>
+    <string name="label_fat_percentage">Fat(%)</string>
+    <string name="label_muscle_weight">Muscle Weight(Kg)</string>
 </resources>

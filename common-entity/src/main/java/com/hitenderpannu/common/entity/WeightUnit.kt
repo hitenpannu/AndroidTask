@@ -1,4 +1,4 @@
-package com.hitenderpannu.workout.entity
+package com.hitenderpannu.common.entity
 
 /**
  * Please dont change the value for int

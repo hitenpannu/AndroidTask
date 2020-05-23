@@ -1,5 +1,6 @@
 package com.hitenderpannu.workout.entity
 
+import com.hitenderpannu.common.entity.WeightUnit
 import java.math.BigDecimal
 
 data class ExerciseSet(

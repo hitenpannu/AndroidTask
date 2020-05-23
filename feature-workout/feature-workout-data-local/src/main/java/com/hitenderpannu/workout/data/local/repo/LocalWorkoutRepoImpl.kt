@@ -1,6 +1,7 @@
 package com.hitenderpannu.workout.data.local.repo
 
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.hitenderpannu.common.entity.WeightUnit
 import com.hitenderpannu.workout.data.local.Mappers
 import com.hitenderpannu.workout.data.local.dao.ExerciseDao
 import com.hitenderpannu.workout.data.local.dao.WorkoutDao
@@ -9,7 +10,6 @@ import com.hitenderpannu.workout.data.local.entities.WorkoutEntity
 import com.hitenderpannu.workout.data.local.entities.WorkoutExerciseCrossRef
 import com.hitenderpannu.workout.domain.local_repo.LocalWorkoutRepo
 import com.hitenderpannu.workout.entity.ExerciseSet
-import com.hitenderpannu.workout.entity.WeightUnit
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutExercise
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
