@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/headerInfoConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/size8">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/currentWeight"
+        style="@style/HeaderValueStyle"
+        android:text="0"
+        android:enabled="false"
+        app:layout_constraintLeft_toLeftOf="@+id/currentWeightLabel"
+        app:layout_constraintRight_toRightOf="@+id/currentWeightLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/currentWeightLabel"
+        style="@style/HeaderLabelStyle"
+        android:text="@string/label_current_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/currentFatPercentageLabel"
+        app:layout_constraintTop_toBottomOf="@+id/currentWeight"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/currentWeightBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="currentWeight, currentWeightLabel"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/currentFatPercentage"
+        style="@style/HeaderValueStyle"
+        android:text="0"
+        android:enabled="false"
+        app:layout_constraintLeft_toLeftOf="@+id/currentFatPercentageLabel"
+        app:layout_constraintRight_toRightOf="@+id/currentFatPercentageLabel"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/currentFatPercentageLabel"
+        style="@style/HeaderLabelStyle"
+        android:text="@string/label_current_fat_percentage"
+        app:layout_constraintLeft_toRightOf="@+id/currentWeightLabel"
+        app:layout_constraintRight_toLeftOf="@+id/muscleWeightLabel"
+        app:layout_constraintTop_toBottomOf="@+id/currentFatPercentage"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/fatPercentageBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="currentFatPercentage, currentFatPercentageLabel"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/muscleWeight"
+        style="@style/HeaderValueStyle"
+        android:text="0"
+        android:enabled="false"
+        app:layout_constraintLeft_toLeftOf="@+id/muscleWeightLabel"
+        app:layout_constraintRight_toRightOf="@+id/muscleWeightLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/muscleWeightLabel"
+        style="@style/HeaderLabelStyle"
+        android:text="@string/label_current_muscle_mass"
+        app:layout_constraintLeft_toRightOf="@+id/currentFatPercentageLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/muscleWeight" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="currentWeightLabel, currentFatPercentageLabel, muscleWeightLabel" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/leftLabelsBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="currentWeightLabel, currentFatPercentageLabel, muscleWeightLabel" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="@string/action_update"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text12"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

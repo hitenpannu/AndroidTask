@@ -21,6 +21,11 @@
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-domain" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-entity" />
             <option value="$PROJECT_DIR$/feature-auth/feature-auth-ui" />
+            <option value="$PROJECT_DIR$/feature-body-composition" />
+            <option value="$PROJECT_DIR$/feature-body-composition/feature-body-composition-data-local" />
+            <option value="$PROJECT_DIR$/feature-body-composition/feature-body-composition-domain" />
+            <option value="$PROJECT_DIR$/feature-body-composition/feature-body-composition-entity" />
+            <option value="$PROJECT_DIR$/feature-body-composition/feature-body-composition-ui" />
             <option value="$PROJECT_DIR$/feature-task" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-data-network" />
             <option value="$PROJECT_DIR$/feature-task/feature-task-domain" />

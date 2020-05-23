@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_body_composition">Body Composition</string>
+    <string name="label_current_weight">Current Weight(Kg)</string>
+    <string name="label_current_fat_percentage">Current Fat Percentage</string>
+    <string name="label_current_muscle_mass">Current Muscle Mass(Kg)</string>
+    <string name="action_update">Update</string>
+</resources>

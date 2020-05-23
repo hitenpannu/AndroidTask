@@ -47,15 +47,24 @@ class DashBoardFragment : BaseFragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.fetchUpdatedData()
         }
+        setClickListeners()
+        viewModel.unFinishedWorkout.observe(viewLifecycleOwner, unfinishedWorkoutObserver)
+        viewModel.previousWorkout.observe(viewLifecycleOwner, previousWorkoutObserver)
+        viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
+    }
+
+    private fun setClickListeners() {
         binding.createFirstWorkoutButton.setOnClickListener {
             findNavController().navigate(R.id.action_dashBoardFragment_to_addExerciseFragment)
         }
         binding.startNewWorkoutButton.setOnClickListener {
             findNavController().navigate(R.id.action_dashBoardFragment_to_addExerciseFragment)
         }
-        viewModel.unFinishedWorkout.observe(viewLifecycleOwner, unfinishedWorkoutObserver)
-        viewModel.previousWorkout.observe(viewLifecycleOwner, previousWorkoutObserver)
-        viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
+        arrayOf(binding.dashboardHeader.currentWeight, binding.dashboardHeader.currentWeightLabel).forEach {
+            it.setOnClickListener {
+                findNavController().navigate(R.id.action_dashBoardFragment_to_bodyCompositionContainerFragment)
+            }
+        }
     }
 
     private val unfinishedWorkoutObserver = Observer<Workout?> { workout ->

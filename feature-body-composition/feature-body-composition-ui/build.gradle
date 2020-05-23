@@ -1,8 +1,8 @@
 apply from: "../../gradle/feature/ui.gradle"
 
 android {
-    viewBinding{
-        enabled=true
+    viewBinding {
+        enabled = true
     }
 }
 
@@ -10,15 +10,9 @@ dependencies {
     implementation project(":base")
     implementation project(":common-Utils")
     implementation project(":common-domain")
-    api project(":feature-workout:feature-workout-data-network")
-    api project(":feature-workout:feature-workout-domain")
-    api project(":feature-workout:feature-workout-entity")
-    api project(":feature-workout:feature-workout-data-local")
-
-    api project(":feature-body-composition:feature-body-composition-ui")
-
-
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation project(':feature-body-composition:feature-body-composition-data-local')
+    implementation project(':feature-body-composition:feature-body-composition-entity')
+    implementation project(':feature-body-composition:feature-body-composition-domain')
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation nav.fragment

@@ -26,3 +26,8 @@ include ':feature-workout:feature-workout-data-network'
 include ':feature-workout:feature-workout-domain'
 include ':feature-workout:feature-workout-entity'
 include ':feature-workout:feature-workout-data-local'
+
+include ':feature-body-composition:feature-body-composition-ui'
+include ':feature-body-composition:feature-body-composition-data-local'
+include ':feature-body-composition:feature-body-composition-entity'
+include ':feature-body-composition:feature-body-composition-domain'
