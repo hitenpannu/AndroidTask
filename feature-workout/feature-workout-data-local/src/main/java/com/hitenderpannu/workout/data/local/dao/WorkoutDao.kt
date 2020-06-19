@@ -37,14 +37,10 @@ interface WorkoutDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun updateSet(setEntity: SetEntity)
 
-    @Transaction
-    @Query("SELECT * FROM ${WorkoutEntity.TABLE_NAME} WHERE isFinished=0 LIMIT 1")
-    fun getUnfinishedWorkout(): WorkoutEntity?
-
     @RawQuery
     fun updateData(updateQuery: SimpleSQLiteQuery): Int
 
     @Transaction
-    @Query("SELECT * FROM ${WorkoutEntity.TABLE_NAME} WHERE isFinished=1 ORDER BY createdAt DESC LIMIT 1")
-    fun getPreviouslyClosedWorkout(): WorkoutEntity?
+    @Query("SELECT * FROM ${WorkoutEntity.TABLE_NAME} ORDER BY createdAt DESC LIMIT 1")
+    fun getLastWorkout(): WorkoutEntity?
 }

@@ -51,10 +51,6 @@ class WorkoutInteractorImpl(
         return workout?.let { getWorkout(workout.workoutId) }
     }
 
-    override suspend fun getUnFinishedWorkout(): Workout? {
-        return localWorkoutRepo.getUnfinishedWorkout() ?: return null
-    }
-
     override suspend fun updateRepCount(setId: Long, newRepCount: Int) {
         localWorkoutRepo.updateRepCount(setId, newRepCount)
     }

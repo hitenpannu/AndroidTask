@@ -17,8 +17,6 @@ interface LocalWorkoutRepo {
 
     suspend fun getSetsFor(workoutId: Long, exerciseId: String): List<ExerciseSet>
 
-    suspend fun getUnfinishedWorkout(): Workout?
-
     suspend fun createNewSet(workoutId: Long, exerciseId: String)
 
     suspend fun getExerciseForWorkout(workoutId: Long, exerciseId: String): WorkoutExercise

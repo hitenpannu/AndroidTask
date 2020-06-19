@@ -33,9 +33,16 @@ class DashboardFragmentViewModel(
             mutableProgress.postValue(false)
             try {
                 val previousWorkout = workoutInteractor.getPreviousWorkout()
-                mutablePreviousWorkout.postValue(previousWorkout)
-                val workoutExercise = workoutInteractor.getUnFinishedWorkout()
-                mutableUnFinishedWorkout.postValue(workoutExercise)
+                if(previousWorkout == null) {
+                    mutablePreviousWorkout.postValue(null)
+                    return@launch
+                }
+
+                if (previousWorkout.isFinished) {
+                    mutablePreviousWorkout.postValue(previousWorkout)
+                } else {
+                    mutableUnFinishedWorkout.postValue(Workout(previousWorkout.workoutId,previousWorkout.createdAt, previousWorkout.isFinished))
+                }
             } catch (error: Throwable) {
                 Log.e("ERROR", error.message)
             } finally {

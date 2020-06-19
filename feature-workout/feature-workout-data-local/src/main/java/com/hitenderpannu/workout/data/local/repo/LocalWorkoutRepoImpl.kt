@@ -70,11 +70,6 @@ class LocalWorkoutRepoImpl(
         workoutDao.updateSet(entity)
     }
 
-    override suspend fun getUnfinishedWorkout(): Workout? {
-        val workoutEntity = workoutDao.getUnfinishedWorkout() ?: return null
-        return Workout(workoutEntity.id, workoutEntity.createdAt, workoutEntity.isFinished)
-    }
-
     override suspend fun updateRepCount(setId: Long, newRepCount: Int) {
         val updateQuery = SimpleSQLiteQuery("UPDATE ${SetEntity.TABLE_NAME} SET numberOfReps=$newRepCount WHERE id=$setId")
         workoutDao.updateData(updateQuery)
@@ -91,6 +86,6 @@ class LocalWorkoutRepoImpl(
     }
 
     override suspend fun getPreviousWorkout(): Workout? {
-        return workoutDao.getPreviouslyClosedWorkout()?.run { Workout(id, this.createdAt, this.isFinished) }
+        return workoutDao.getLastWorkout()?.run { Workout(id, this.createdAt, this.isFinished) }
     }
 }
