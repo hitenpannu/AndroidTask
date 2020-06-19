@@ -6,10 +6,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.hitenderpannu.feature_dashboard_ui.R
@@ -20,6 +22,16 @@ import com.hitenderpannu.workout.entity.WorkoutWithExercises
 import javax.inject.Inject
 
 class NewWorkoutActivity : AppCompatActivity() {
+
+    companion object {
+        private const val KEY_WORKOUT_ID = "workoutId"
+
+        fun getLaunchIntent(workoutId: Long, context: Context) : Intent {
+            val intent = Intent(context, NewWorkoutActivity::class.java)
+            intent.putExtra(KEY_WORKOUT_ID, workoutId)
+            return intent
+        }
+    }
 
     @Inject lateinit var adapter: NewWorkoutAdapter
 
@@ -41,7 +53,7 @@ class NewWorkoutActivity : AppCompatActivity() {
     }
 
     private fun handleCallingIntent() {
-        val workoutId = intent.getLongExtra(getString(R.string.argument_workout_id), -1)
+        val workoutId = intent.getLongExtra(KEY_WORKOUT_ID, -1)
         viewModel.getWorkout(workoutId)
     }
 

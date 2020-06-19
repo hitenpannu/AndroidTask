@@ -19,7 +19,6 @@ class AddExerciseFragmentViewModel(
 
     init {
         exerciseListInteractor.setApplyFilterListener(this)
-        fetchListOfExercises()
     }
 
     private val mutableExerciseListProgress = MutableLiveData<Boolean>()

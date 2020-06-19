@@ -26,6 +26,10 @@ import javax.inject.Inject
 
 class AddExerciseFragment : Fragment() {
 
+    companion object{
+        private const val REQUEST_WORKOUT_SESSION = 1222
+    }
+
     @Inject
     lateinit var exerciseListAdapter: AddExerciseListAdapter
 
@@ -59,6 +63,7 @@ class AddExerciseFragment : Fragment() {
         binding.exerciseListView.layoutManager = LinearLayoutManager(view.context)
         binding.exerciseListView.adapter = exerciseListAdapter
         exerciseListAdapter.attachSelectedExerciseStore(viewModel)
+        viewModel.fetchListOfExercises(true)
         binding.swipeRefresh.setOnRefreshListener { viewModel.fetchListOfExercises(true) }
         binding.addExerciseFilterButton.setOnClickListener {
             val extras = FragmentNavigatorExtras(it to "sharedElementContainer")
@@ -108,10 +113,18 @@ class AddExerciseFragment : Fragment() {
 
     private val newWorkoutIdObserver = Observer<Long?> { id ->
         if (id != null) {
-            //val intent = NewWorkoutActivity.getLaunchIntent(id, requireContext())
-            val bundle = bundleOf(getString(R.string.argument_workout_id) to id)
-            findNavController().navigate(R.id.action_addExerciseFragment_to_newWorkoutFragment, bundle)
+            val intent = NewWorkoutActivity.getLaunchIntent(id, requireContext())
+            startActivityForResult(intent, REQUEST_WORKOUT_SESSION)
             viewModel.clearWorkoutId()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            REQUEST_WORKOUT_SESSION -> {
+                findNavController().popBackStack()
+            }
         }
     }
 }
