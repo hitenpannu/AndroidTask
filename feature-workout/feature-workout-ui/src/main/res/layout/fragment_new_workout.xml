@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#f2f2f2"
     android:paddingTop="@dimen/status_bar_height"
-    tools:context="com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment">
+    tools:context="com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"

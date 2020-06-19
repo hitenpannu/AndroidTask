@@ -31,3 +31,6 @@ include ':feature-body-composition:feature-body-composition-ui'
 include ':feature-body-composition:feature-body-composition-data-local'
 include ':feature-body-composition:feature-body-composition-entity'
 include ':feature-body-composition:feature-body-composition-domain'
+
+include ':dynamicTaskFeature'
+include ':dynamicBmifeature'

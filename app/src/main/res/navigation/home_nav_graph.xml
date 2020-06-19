@@ -13,7 +13,8 @@
 
     <fragment
         android:id="@+id/taskManager"
-        android:name="com.hitenderpannu.task.ui.taskFragment.TaskFragment"
+        android:name="com.hitenderpannu.dynamictaskfeature.ui.TaskFragment"
         android:label="@string/label_tasks"
-        app:targetPackage="com.hitenderpannu.task.ui" />
+        app:moduleName='dynamicTaskFeature'
+        />
 </navigation>

@@ -2,7 +2,7 @@ package com.hitenderpannu.workout.di.new_workout
 
 import com.hitenderpannu.workout.di.NewWorkoutScope
 import com.hitenderpannu.workout.di.workout.WorkoutComponent
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
 import dagger.Component
 
 @NewWorkoutScope
@@ -12,5 +12,5 @@ import dagger.Component
 )
 interface NewWorkoutComponent {
 
-    fun inject(newWorkoutFragment: NewWorkoutFragment)
+    fun inject(newWorkoutActivity: NewWorkoutActivity)
 }

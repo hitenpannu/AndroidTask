@@ -24,8 +24,7 @@ class LocalBodyCompositionRepoImpl(
         bodyCompositionDao.update(entity)
     }
 
-    override fun getLatest(): PrimaryBodyComposition {
-        val entity = bodyCompositionDao.getLatest()
-        return PrimaryCompositionMapper.to(entity)
+    override fun getLatest(): Flow<PrimaryBodyComposition> {
+        return bodyCompositionDao.getLatest().map { PrimaryCompositionMapper.to(it) }
     }
 }

@@ -11,5 +11,5 @@ interface BodyCompositionInteractor {
 
     fun updateEntry(primaryBodyComposition: PrimaryBodyComposition)
 
-    fun getLatestEntry(): PrimaryBodyComposition
+    fun getLatestEntry(): Flow<PrimaryBodyComposition>
 }

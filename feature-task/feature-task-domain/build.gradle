@@ -1,8 +1,0 @@
-apply from: "../../gradle/feature/repo.gradle"
-
-dependencies {
-    implementation project(':common-domain')
-    implementation project(":common-Utils")
-    implementation project(":common-entity")
-    implementation project(":feature-task:feature-task-entity")
-}

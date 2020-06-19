@@ -2,4 +2,6 @@
     <string name="app_name">BYB</string>
     <string name="title_feature_task">Task Feature</string>
     <string name="title_feature_task_ui">Task</string>
+    <string name="title_dynamictaskfeature">TaskManager</string>
+    <string name="title_dynamicbmifeature">Bmi</string>
 </resources>

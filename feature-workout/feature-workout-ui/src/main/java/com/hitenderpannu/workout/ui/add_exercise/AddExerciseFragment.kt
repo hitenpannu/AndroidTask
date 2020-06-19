@@ -1,6 +1,7 @@
 package com.hitenderpannu.workout.ui.add_exercise
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,7 @@ import com.hitenderpannu.feature_dashboard_ui.R
 import com.hitenderpannu.feature_dashboard_ui.databinding.FragmentAddExerciseBinding
 import com.hitenderpannu.workout.di.DaggerManager
 import com.hitenderpannu.workout.entity.Exercise
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
 import javax.inject.Inject
 
 class AddExerciseFragment : Fragment() {
@@ -107,7 +108,8 @@ class AddExerciseFragment : Fragment() {
 
     private val newWorkoutIdObserver = Observer<Long?> { id ->
         if (id != null) {
-            val bundle = bundleOf(NewWorkoutFragment.KEY_WORKOUT_ID to id)
+            //val intent = NewWorkoutActivity.getLaunchIntent(id, requireContext())
+            val bundle = bundleOf(getString(R.string.argument_workout_id) to id)
             findNavController().navigate(R.id.action_addExerciseFragment_to_newWorkoutFragment, bundle)
             viewModel.clearWorkoutId()
         }

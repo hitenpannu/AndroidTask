@@ -20,7 +20,7 @@ class HomeViewModel(
     fun listOfFeatures(): LiveData<List<DynamicFeatureManager.FEATURE>> = mutableListOfFeatures
 
     init {
-        fetchListOfInstalledFeatures()
+
     }
 
     fun fetchUserData() {
@@ -28,14 +28,5 @@ class HomeViewModel(
             mutableUserName.postValue(userName ?: "")
             mutableUserEmail.postValue(userEmail ?: "")
         }
-    }
-
-    fun fetchListOfInstalledFeatures() {
-        dynamicFeatureManager.getListOfAvailableFeatures().toList()
-            .apply { mutableListOfFeatures.postValue(this) }
-    }
-
-    fun launchFeature(feature: DynamicFeatureManager.FEATURE) {
-
     }
 }

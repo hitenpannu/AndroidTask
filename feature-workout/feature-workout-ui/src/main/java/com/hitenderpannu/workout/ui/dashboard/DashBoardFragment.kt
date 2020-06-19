@@ -17,7 +17,7 @@ import com.hitenderpannu.feature_dashboard_ui.databinding.FragmentDashBoardsBind
 import com.hitenderpannu.workout.di.DaggerManager
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
 import javax.inject.Inject
 
 class DashBoardFragment : BaseFragment() {
@@ -71,7 +71,7 @@ class DashBoardFragment : BaseFragment() {
         binding.unFinishedWorkoutCard.isVisible = workout != null
         binding.actionContinue.setOnClickListener {
             if (workout != null) {
-                val bundle = bundleOf(NewWorkoutFragment.KEY_WORKOUT_ID to workout.workoutId)
+                val bundle = bundleOf(getString(R.string.argument_workout_id) to workout.workoutId)
                 findNavController().navigate(R.id.action_dashBoardFragment_to_newWorkoutFragment, bundle)
             }
         }

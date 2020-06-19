@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.hitenderpannu.workout.di.NewWorkoutScope
 import com.hitenderpannu.workout.domain.WorkoutInteractor
 import com.hitenderpannu.workout.ui.new_workout.NewWorkoutAdapter
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragmentViewModel
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivityViewModel
 import dagger.Module
 import dagger.Provides
 
 @Module
-class NewWorkoutModule(private val fragment: NewWorkoutFragment) {
+class NewWorkoutModule(private val activity: NewWorkoutActivity) {
 
     @NewWorkoutScope
     @Provides
@@ -24,8 +24,8 @@ class NewWorkoutModule(private val fragment: NewWorkoutFragment) {
     fun provideViewModelFactory(workoutInteractor: WorkoutInteractor): ViewModelProvider.Factory {
         return object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                if (modelClass.isAssignableFrom(NewWorkoutFragmentViewModel::class.java))
-                    return NewWorkoutFragmentViewModel(workoutInteractor) as T
+                if (modelClass.isAssignableFrom(NewWorkoutActivityViewModel::class.java))
+                    return NewWorkoutActivityViewModel(workoutInteractor) as T
 
                 throw IllegalArgumentException("UnSupported ViewModel requested")
             }

@@ -28,5 +28,5 @@ interface PrimaryBodyCompositionDao {
 
     @Transaction
     @Query("SELECT * FROM $TABLE_NAME ORDER BY createdOn DESC LIMIT 1")
-    fun getLatest(): PrimaryBodyCompositionEntity
+    fun getLatest(): Flow<PrimaryBodyCompositionEntity>
 }

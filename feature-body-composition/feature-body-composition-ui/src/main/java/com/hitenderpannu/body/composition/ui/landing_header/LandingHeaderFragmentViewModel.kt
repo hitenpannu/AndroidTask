@@ -8,6 +8,8 @@ import com.hitenderpannu.body.composition.entity.PrimaryBodyComposition
 import com.hitenderpannu.common.entity.WeightUnit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class LandingHeaderFragmentViewModel(
@@ -27,8 +29,9 @@ class LandingHeaderFragmentViewModel(
     private fun getLatestBodyComposition() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val latestComposition = bodyCompositionInteractor.getLatestEntry()
-                mutablePrimaryBodyComposition.postValue(latestComposition)
+                bodyCompositionInteractor.getLatestEntry().collect {latestComposition ->
+                    mutablePrimaryBodyComposition.postValue(latestComposition)
+                }
             } catch (error: Throwable) {
                 mutableErrorMessage.postValue(error.message)
             }

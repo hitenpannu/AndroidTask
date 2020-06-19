@@ -50,24 +50,26 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_dashboard -> findNavController(R.id.nav_host_fragment).navigate(R.id.workout)
                 R.id.nav_tasks -> {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        if (dynamicFeatureManager.isInstalled(DynamicFeatureManager.FEATURE.TASK)) {
-                            findNavController(R.id.nav_host_fragment).navigate(R.id.taskManager)
-                        } else {
-                            val channel = dynamicFeatureManager.install(DynamicFeatureManager.FEATURE.TASK)
-                            while (!channel.isClosedForReceive && !channel.isClosedForSend) {
-                                val result = channel.receive()
-                                if (result.isSuccess) {
-                                    result.onSuccess { item ->
-                                        Log.e("RESULT", item.first)
-                                    }
-                                    result.onFailure {
-                                        Log.e("RESULT", it.message)
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.taskManager)
+//                    CoroutineScope(Dispatchers.IO).launch {
+//                        if (dynamicFeatureManager.isInstalled(DynamicFeatureManager.FEATURE.TASK)) {
+//                            findNavController(R.id.nav_host_fragment).navigate(R.id.taskManager)
+//                        } else {
+//                            val channel = dynamicFeatureManager.install(DynamicFeatureManager.FEATURE.TASK)
+//                            while (!channel.isClosedForReceive && !channel.isClosedForSend) {
+//                                val result = channel.receive()
+//                                if (result.isSuccess) {
+//                                    result.onSuccess { item ->
+//                                        findNavController(R.id.nav_host_fragment).navigate(R.id.taskManager)
+//                                        Log.e("RESULT", item.first)
+//                                    }
+//                                    result.onFailure {
+//                                        Log.e("RESULT", it.message)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }

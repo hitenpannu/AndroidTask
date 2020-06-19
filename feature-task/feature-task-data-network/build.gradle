@@ -1,7 +1,0 @@
-apply from: "../../gradle/feature/data-network.gradle"
-
-dependencies {
-    implementation project(":common-entity")
-    implementation project(':feature-task:feature-task-entity')
-    implementation project(":feature-task:feature-task-domain")
-}

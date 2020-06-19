@@ -3,7 +3,7 @@
     package="com.hitenderpannu.feature_dashboard_ui">
 
     <application>
-        <activity android:name="com.hitenderpannu.workout.ui.dashboard.DashBoardFragment"/>
+        <activity android:name="com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity"/>
     </application>
 
 </manifest>

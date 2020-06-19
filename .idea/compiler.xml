@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="common-domain" target="1.7" />
+      <module name="common-entity" target="1.7" />
+      <module name="common-Utils" target="1.7" />
+      <module name="feature-auth-data-network" target="1.7" />
+      <module name="feature-auth-domain" target="1.7" />
+      <module name="feature-auth-entity" target="1.7" />
+      <module name="feature-body-composition-feature-body-composition-domain" target="1.7" />
+      <module name="feature-body-composition-feature-body-composition-entity" target="1.7" />
+      <module name="feature-workout-feature-workout-data-network" target="1.7" />
+      <module name="feature-workout-feature-workout-domain" target="1.7" />
+      <module name="feature-workout-feature-workout-entity" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

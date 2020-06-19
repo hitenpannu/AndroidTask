@@ -15,7 +15,7 @@
             app:destination="@id/addExerciseFragment" />
         <action
             android:id="@+id/action_dashBoardFragment_to_newWorkoutFragment"
-            app:destination="@id/newWorkoutFragment" />
+            app:destination="@id/newWorkoutActivity" />
         <action
             android:id="@+id/action_dashBoardFragment_to_bodyCompositionContainerFragment"
             app:destination="@id/bodyCompositionContainerFragment" />
@@ -30,7 +30,9 @@
             app:destination="@id/exerciseFiltersFragment" />
         <action
             android:id="@+id/action_addExerciseFragment_to_newWorkoutFragment"
-            app:destination="@id/newWorkoutFragment" />
+            app:destination="@id/newWorkoutActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/exerciseFiltersFragment"
@@ -38,11 +40,16 @@
         android:label="fragment_filters"
         tools:layout="@layout/fragment_filters" >
     </fragment>
-    <fragment
-        android:id="@+id/newWorkoutFragment"
-        android:name="com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment"
+    <activity
+        android:id="@+id/newWorkoutActivity"
+        android:name="com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity"
         android:label="fragment_new_workout"
-        tools:layout="@layout/fragment_new_workout" />
+        tools:layout="@layout/fragment_new_workout">
+        <argument
+            android:name="@string/argument_workout_id"
+            android:defaultValue="-1L"
+            app:argType="long" />
+    </activity>
     <fragment
         android:id="@+id/bodyCompositionContainerFragment"
         android:name="com.hitenderpannu.body.composition.ui.BodyCompositionContainerFragment"

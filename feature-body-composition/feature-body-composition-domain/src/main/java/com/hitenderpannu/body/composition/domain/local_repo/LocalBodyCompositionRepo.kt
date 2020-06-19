@@ -11,5 +11,5 @@ interface LocalBodyCompositionRepo {
 
     fun update(composition: PrimaryBodyComposition)
 
-    fun getLatest(): PrimaryBodyComposition
+    fun getLatest(): Flow<PrimaryBodyComposition>
 }

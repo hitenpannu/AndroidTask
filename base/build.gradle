@@ -51,8 +51,9 @@ dependencies {
     implementation networkDependencies.retrofitConverter
     implementation networkDependencies.retrofiLoggingInterceptor
 
-    implementation project(':common-domain')
-    implementation project(":common-Utils")
+    api project(':common-domain')
+    api project(":common-Utils")
+    api project(":common-entity")
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

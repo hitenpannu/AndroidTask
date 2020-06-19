@@ -14,7 +14,7 @@ import com.hitenderpannu.workout.di.workout.WorkoutModule
 import com.hitenderpannu.workout.ui.add_exercise.AddExerciseFragment
 import com.hitenderpannu.workout.ui.dashboard.DashBoardFragment
 import com.hitenderpannu.workout.ui.exercise_filters.ExerciseFiltersFragment
-import com.hitenderpannu.workout.ui.new_workout.NewWorkoutFragment
+import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
 
 object DaggerManager {
 
@@ -48,11 +48,11 @@ object DaggerManager {
             .build().inject(addExerciseFiltersFragment)
     }
 
-    fun inject(newWorkoutFragment: NewWorkoutFragment) {
-        if (workoutComponent == null) initializeWorkoutComponent(newWorkoutFragment.requireActivity().application as MainApplication)
+    fun inject(newWorkoutActivity: NewWorkoutActivity) {
+        if (workoutComponent == null) initializeWorkoutComponent(newWorkoutActivity.application as MainApplication)
         DaggerNewWorkoutComponent.builder()
             .workoutComponent(workoutComponent)
-            .newWorkoutModule(NewWorkoutModule(newWorkoutFragment))
-            .build().inject(newWorkoutFragment)
+            .newWorkoutModule(NewWorkoutModule(newWorkoutActivity))
+            .build().inject(newWorkoutActivity)
     }
 }

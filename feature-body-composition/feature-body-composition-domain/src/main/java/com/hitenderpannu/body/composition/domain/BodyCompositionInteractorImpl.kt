@@ -17,7 +17,7 @@ class BodyCompositionInteractorImpl(private val localRepo: LocalBodyCompositionR
         return localRepo.update(primaryBodyComposition)
     }
 
-    override fun getLatestEntry(): PrimaryBodyComposition {
+    override fun getLatestEntry(): Flow<PrimaryBodyComposition> {
         return localRepo.getLatest()
     }
 }
