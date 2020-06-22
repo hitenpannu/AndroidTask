@@ -18,6 +18,7 @@ import com.hitenderpannu.workout.di.DaggerManager
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
 import com.hitenderpannu.workout.ui.new_workout.NewWorkoutActivity
+import java.math.BigDecimal
 import javax.inject.Inject
 
 class DashBoardFragment : BaseFragment() {
@@ -48,9 +49,13 @@ class DashBoardFragment : BaseFragment() {
             viewModel.fetchUpdatedData()
         }
         setClickListeners()
+        viewModel.fetchUpdatedData()
         viewModel.unFinishedWorkout.observe(viewLifecycleOwner, unfinishedWorkoutObserver)
+        viewModel.noWorkout.observe(viewLifecycleOwner, noWorkoutObserver)
         viewModel.previousWorkout.observe(viewLifecycleOwner, previousWorkoutObserver)
         viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
+        viewModel.numberOfWorkouts.observe(viewLifecycleOwner, workoutCountObserver)
+        viewModel.totalAmountOfWeightLifted.observe(viewLifecycleOwner, weightObserver)
     }
 
     private fun setClickListeners() {
@@ -67,6 +72,10 @@ class DashBoardFragment : BaseFragment() {
         }
     }
 
+    private val noWorkoutObserver = Observer<Boolean?> { show ->
+        binding.noWorkoutsGroup.isVisible = show ?: false
+    }
+
     private val unfinishedWorkoutObserver = Observer<Workout?> { workout ->
         binding.unFinishedWorkoutCard.isVisible = workout != null
         binding.actionContinue.setOnClickListener {
@@ -79,7 +88,6 @@ class DashBoardFragment : BaseFragment() {
 
     private val previousWorkoutObserver = Observer<WorkoutWithExercises?> { previousWorkout ->
         binding.previousWorkoutAnalysis.isVisible = previousWorkout != null
-        binding.noWorkoutsGroup.isVisible = previousWorkout == null
         binding.startNewWorkoutCard.isVisible = previousWorkout != null
         if (previousWorkout != null) {
             binding.previousWorkoutAnalysis.showAnalysisFor(previousWorkout)
@@ -90,5 +98,13 @@ class DashBoardFragment : BaseFragment() {
         if (binding.swipeRefresh.isRefreshing && !it) {
             binding.swipeRefresh.post { binding.swipeRefresh.isRefreshing = false }
         }
+    }
+
+    private val workoutCountObserver = Observer<Int> {
+        binding.dashboardHeader.totalWorkoutCount.text = it.toString()
+    }
+
+    private val weightObserver = Observer<BigDecimal> {
+        binding.dashboardHeader.totalWeightLifted.text = it.toPlainString()
     }
 }

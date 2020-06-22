@@ -4,6 +4,8 @@ import com.hitenderpannu.workout.entity.ExerciseSet
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutExercise
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
+import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 interface LocalWorkoutRepo {
 
@@ -27,5 +29,9 @@ interface LocalWorkoutRepo {
 
     suspend fun finishWorkout(workoutId: Long)
 
-    suspend fun getPreviousWorkout(): Workout?
+    suspend fun getPreviousWorkout(): Flow<Workout?>
+
+    suspend fun getTotalNumberOfWorkouts(): Flow<Int>
+
+    suspend fun getTotalAmountOfWeightLifted(): Flow<BigDecimal>
 }

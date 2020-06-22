@@ -13,6 +13,8 @@ import com.hitenderpannu.workout.entity.ExerciseSet
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutExercise
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import java.math.BigDecimal
 
 class LocalWorkoutRepoImpl(
@@ -85,7 +87,15 @@ class LocalWorkoutRepoImpl(
         workoutDao.updateData(updateQuery)
     }
 
-    override suspend fun getPreviousWorkout(): Workout? {
-        return workoutDao.getLastWorkout()?.run { Workout(id, this.createdAt, this.isFinished) }
+    override suspend fun getPreviousWorkout(): Flow<Workout?> {
+        return workoutDao.getLastWorkout().map { it?.let { Workout(it.id, it.createdAt, it.isFinished) } }
+    }
+
+    override suspend fun getTotalNumberOfWorkouts(): Flow<Int> {
+        return workoutDao.getTotalNumberOfWorkouts()
+    }
+
+    override suspend fun getTotalAmountOfWeightLifted(): Flow<BigDecimal> {
+        return workoutDao.getTotalAmountOfWeightLifted().map { BigDecimal.valueOf(it) }
     }
 }

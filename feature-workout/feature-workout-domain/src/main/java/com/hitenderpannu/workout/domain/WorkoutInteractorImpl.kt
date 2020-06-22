@@ -7,6 +7,9 @@ import com.hitenderpannu.workout.entity.ExerciseSet
 import com.hitenderpannu.workout.entity.Workout
 import com.hitenderpannu.workout.entity.WorkoutExercise
 import com.hitenderpannu.workout.entity.WorkoutWithExercises
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import java.math.BigDecimal
 
 class WorkoutInteractorImpl(
     private val localWorkoutRepo: LocalWorkoutRepo,
@@ -46,9 +49,11 @@ class WorkoutInteractorImpl(
         )
     }
 
-    override suspend fun getPreviousWorkout(): WorkoutWithExercises? {
-        val workout = localWorkoutRepo.getPreviousWorkout()
-        return workout?.let { getWorkout(workout.workoutId) }
+    override suspend fun getPreviousWorkout(): Flow<WorkoutWithExercises?> {
+        return localWorkoutRepo.getPreviousWorkout().map {
+            if(it!=null) getWorkout(it.workoutId)
+            else null
+        }
     }
 
     override suspend fun updateRepCount(setId: Long, newRepCount: Int) {
@@ -61,5 +66,13 @@ class WorkoutInteractorImpl(
 
     override suspend fun finishWorkout(workoutId: Long) {
         localWorkoutRepo.finishWorkout(workoutId)
+    }
+
+    override suspend fun getTotalNumberOfWorkouts(): Flow<Int> {
+        return localWorkoutRepo.getTotalNumberOfWorkouts()
+    }
+
+    override suspend fun getTotalAmountOfWeightLifted(): Flow<BigDecimal> {
+        return localWorkoutRepo.getTotalAmountOfWeightLifted()
     }
 }

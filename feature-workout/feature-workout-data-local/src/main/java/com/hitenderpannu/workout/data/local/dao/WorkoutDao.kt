@@ -1,6 +1,8 @@
 package com.hitenderpannu.workout.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.DatabaseView
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -12,6 +14,7 @@ import com.hitenderpannu.workout.data.local.entities.WorkoutEntity
 import com.hitenderpannu.workout.data.local.entities.WorkoutExerciseCrossRef
 import com.hitenderpannu.workout.data.local.entities.WorkoutWithExercise
 import com.hitenderpannu.workout.entity.Workout
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WorkoutDao {
@@ -42,5 +45,13 @@ interface WorkoutDao {
 
     @Transaction
     @Query("SELECT * FROM ${WorkoutEntity.TABLE_NAME} ORDER BY createdAt DESC LIMIT 1")
-    fun getLastWorkout(): WorkoutEntity?
+    fun getLastWorkout(): Flow<WorkoutEntity?>
+
+    @Transaction
+    @Query("SELECT count(*) FROM ${WorkoutEntity.TABLE_NAME}")
+    fun getTotalNumberOfWorkouts(): Flow<Int>
+
+    @Transaction
+    @Query("SELECT sum(weight) FROM ${SetEntity.TABLE_NAME}")
+    fun getTotalAmountOfWeightLifted(): Flow<Double>
 }

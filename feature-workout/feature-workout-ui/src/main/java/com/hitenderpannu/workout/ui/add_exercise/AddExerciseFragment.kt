@@ -63,7 +63,9 @@ class AddExerciseFragment : Fragment() {
         binding.exerciseListView.layoutManager = LinearLayoutManager(view.context)
         binding.exerciseListView.adapter = exerciseListAdapter
         exerciseListAdapter.attachSelectedExerciseStore(viewModel)
-        viewModel.fetchListOfExercises(true)
+
+        viewModel.fetchListOfExercises()
+
         binding.swipeRefresh.setOnRefreshListener { viewModel.fetchListOfExercises(true) }
         binding.addExerciseFilterButton.setOnClickListener {
             val extras = FragmentNavigatorExtras(it to "sharedElementContainer")
