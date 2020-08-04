@@ -1,9 +1,18 @@
 apply from: "../../gradle/feature/repo.gradle"
 
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs += "-Xopt-in=org.mylibrary.OptInAnnotation"
+        jvmTarget = "1.8"
+    }
+}
+
 dependencies {
     implementation project(':common-domain')
     implementation project(":common-Utils")
     implementation project(":common-entity")
     implementation project(":feature-auth:feature-auth-data-network")
     implementation project(":feature-auth:feature-auth-entity")
+
+    implementation 'com.tinder.statemachine:statemachine:0.2.0'
 }

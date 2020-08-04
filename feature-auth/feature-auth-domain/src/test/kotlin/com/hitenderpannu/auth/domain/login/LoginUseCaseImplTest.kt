@@ -1,12 +1,8 @@
 package com.hitenderpannu.auth.domain.login
 
 import com.hitenderpannu.auth.data.network.AuthRepo
-import com.hitenderpannu.auth.data.network.entity.NetworkUser
-import com.hitenderpannu.auth.data.network.entity.SignupResponse
 import com.hitenderpannu.auth.entity.User
 import com.hitenderpannu.common.domain.UserPreferences
-import com.hitenderpannu.common.entity.NetworkResponse
-import com.hitenderpannu.common.entity.Status
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.common.utils.NoInternetConnection
 import kotlinx.coroutines.runBlocking
@@ -19,7 +15,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class LoginInteractorImplTest {
+class LoginUseCaseImplTest {
 
     @Mock
     lateinit var networkConnectionChecker: NetworkConnectionChecker
@@ -31,7 +27,7 @@ class LoginInteractorImplTest {
     lateinit var userPreferences: UserPreferences
 
     @InjectMocks
-    lateinit var loginInteractorImpl: LoginInteractorImpl
+    lateinit var loginInteractorImpl: LoginUseCaseImpl
 
     @Test
     fun `return internet error`() {

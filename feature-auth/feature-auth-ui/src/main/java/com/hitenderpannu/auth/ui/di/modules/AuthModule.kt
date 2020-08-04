@@ -3,12 +3,16 @@ package com.hitenderpannu.auth.ui.di.modules
 import com.hitenderpannu.auth.data.network.AuthApi
 import com.hitenderpannu.auth.data.network.AuthRepo
 import com.hitenderpannu.auth.data.network.AuthRepoImpl
-import com.hitenderpannu.auth.domain.guest.GuestLoginInteractor
-import com.hitenderpannu.auth.domain.guest.GuestLoginInteractorImpl
-import com.hitenderpannu.auth.domain.login.LoginInteractor
-import com.hitenderpannu.auth.domain.login.LoginInteractorImpl
-import com.hitenderpannu.auth.domain.signup.SignUpInteractor
-import com.hitenderpannu.auth.domain.signup.SignUpInteractorImpl
+import com.hitenderpannu.auth.domain.AuthProcessInteractor
+import com.hitenderpannu.auth.domain.AuthProcessInteractorImpl
+import com.hitenderpannu.auth.domain.authform.AuthFormInteractor
+import com.hitenderpannu.auth.domain.authform.AuthFormInteractorImpl
+import com.hitenderpannu.auth.domain.guest.GuestLoginUseCase
+import com.hitenderpannu.auth.domain.guest.GuestLoginUseCaseImpl
+import com.hitenderpannu.auth.domain.login.LoginUseCase
+import com.hitenderpannu.auth.domain.login.LoginUseCaseImpl
+import com.hitenderpannu.auth.domain.signup.SignUpUseCase
+import com.hitenderpannu.auth.domain.signup.SignUpUseCaseImpl
 import com.hitenderpannu.auth.ui.AuthActivity
 import com.hitenderpannu.auth.ui.ViewModelFactory
 import com.hitenderpannu.auth.ui.di.AuthScope
@@ -31,30 +35,45 @@ class AuthModule(private val authActivity: AuthActivity) {
 
     @AuthScope
     @Provides
-    fun provideGuestLoginInteractor(userPreferences: UserPreferences): GuestLoginInteractor {
-        return GuestLoginInteractorImpl(userPreferences)
+    fun provideGuestLoginUseCase(userPreferences: UserPreferences): GuestLoginUseCase {
+        return GuestLoginUseCaseImpl(userPreferences)
     }
 
     @AuthScope
     @Provides
-    fun provideLoginInteractor(
+    fun provideLoginUseCase(
         networkConnectionChecker: NetworkConnectionChecker,
         authRepo: AuthRepo,
         userPreferences: UserPreferences
-    ): LoginInteractor = LoginInteractorImpl(networkConnectionChecker, authRepo, userPreferences)
+    ): LoginUseCase = LoginUseCaseImpl(networkConnectionChecker, authRepo, userPreferences)
 
     @Provides
     @AuthScope
-    fun provideSignupInteractor(
+    fun provideSignUpUseCase(
         networkConnectionChecker: NetworkConnectionChecker,
         authRepo: AuthRepo,
         userPreferences: UserPreferences
-    ): SignUpInteractor = SignUpInteractorImpl(networkConnectionChecker, authRepo, userPreferences)
+    ): SignUpUseCase = SignUpUseCaseImpl(networkConnectionChecker, authRepo, userPreferences)
+
+    @Provides
+    @AuthScope
+    fun provideAuthInteractor(
+        guestLoginUseCase: GuestLoginUseCase,
+        loginUseCase: LoginUseCase,
+        signUpUseCase: SignUpUseCase
+    ): AuthProcessInteractor {
+        return AuthProcessInteractorImpl(guestLoginUseCase, loginUseCase, signUpUseCase)
+    }
+
+    @Provides
+    @AuthScope
+    fun provideAuthFormInteractor(authProcessInteractor: AuthProcessInteractor): AuthFormInteractor {
+        return AuthFormInteractorImpl(authProcessInteractor)
+    }
 
     @Provides
     fun provideViewModelFactory(
-        loginInteractor: LoginInteractor,
-        signUpInteractor: SignUpInteractor,
-        guestLoginInteractor: GuestLoginInteractor
-    ) = ViewModelFactory(loginInteractor, signUpInteractor, guestLoginInteractor)
+        authProcessInteractor: AuthProcessInteractor,
+        authFormInteractor: AuthFormInteractor
+    ) = ViewModelFactory(authProcessInteractor, authFormInteractor)
 }

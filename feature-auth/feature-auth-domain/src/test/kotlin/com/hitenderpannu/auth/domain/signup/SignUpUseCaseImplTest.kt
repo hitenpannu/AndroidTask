@@ -15,7 +15,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class SignUpInteractorImplTest {
+class SignUpUseCaseImplTest {
 
     @Mock
     lateinit var authRepo: AuthRepo
@@ -27,7 +27,7 @@ class SignUpInteractorImplTest {
     lateinit var networkConnectionChecker: NetworkConnectionChecker
 
     @InjectMocks
-    lateinit var signUpInteractorImpl: SignUpInteractorImpl
+    lateinit var signUpInteractorImpl: SignUpUseCaseImpl
 
     @Test
     fun `throw no internet connection`() {

@@ -1,5 +1,5 @@
 package com.hitenderpannu.auth.domain.logout
 
-interface LogoutInteractor {
+interface LogoutUseCase {
     suspend fun logout()
 }

@@ -9,7 +9,7 @@
     android:padding="@dimen/size16"
     android:animateLayoutChanges="true"
     android:id="@+id/authConstraintLayout"
-    tools:context=".login.AuthFragment">
+    tools:context=".authform.AuthFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/labelAuthTitle"
@@ -105,7 +105,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size16"
-        android:enabled="false"
         android:text="@string/action_login"
         android:textAllCaps="false"
         android:textColor="@color/white"

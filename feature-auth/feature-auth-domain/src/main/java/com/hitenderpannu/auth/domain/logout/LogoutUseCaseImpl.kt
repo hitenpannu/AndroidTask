@@ -1,28 +1,28 @@
-package com.hitenderpannu.auth.domain.login
+package com.hitenderpannu.auth.domain.logout
 
 import com.hitenderpannu.auth.data.network.AuthRepo
-import com.hitenderpannu.auth.entity.User
 import com.hitenderpannu.common.domain.UserPreferences
 import com.hitenderpannu.common.utils.NetworkConnectionChecker
 import com.hitenderpannu.common.utils.NoInternetConnection
 
-class LoginInteractorImpl(
+class LogoutUseCaseImpl(
     private val networkConnectionChecker: NetworkConnectionChecker,
     private val authRepo: AuthRepo,
     private val userPreferences: UserPreferences
-) : LoginInteractor {
-    override suspend fun login(email: String, password: String): User {
+) : LogoutUseCase {
+    override suspend fun logout() {
         if (!networkConnectionChecker.isConnected()) {
             throw NoInternetConnection
         }
-        return authRepo.login(email, password).also { updateUserPreferences(it) }
+        authRepo.logout()
+        clearUserPreferences()
     }
 
-    private fun updateUserPreferences(user: User) {
-        userPreferences.userName = user.name
-        userPreferences.userId = user.id
-        userPreferences.userEmail = user.email
-        userPreferences.userToken = user.authToken
+    private fun clearUserPreferences() {
+        userPreferences.userId = null
+        userPreferences.userName = null
+        userPreferences.userEmail = null
+        userPreferences.userToken = null
         userPreferences.guestUserId = null
     }
 }

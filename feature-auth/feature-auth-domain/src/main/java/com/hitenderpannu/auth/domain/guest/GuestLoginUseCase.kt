@@ -1,5 +1,5 @@
 package com.hitenderpannu.auth.domain.guest
 
-interface GuestLoginInteractor {
+interface GuestLoginUseCase {
     suspend fun login() : String
 }

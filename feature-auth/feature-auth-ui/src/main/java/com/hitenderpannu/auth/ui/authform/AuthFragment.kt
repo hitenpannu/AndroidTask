@@ -1,4 +1,4 @@
-package com.hitenderpannu.auth.ui.login
+package com.hitenderpannu.auth.ui.authform
 
 import android.content.Context
 import android.os.Bundle
@@ -25,7 +25,6 @@ class AuthFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val authViewModel by lazy { ViewModelProviders.of(activity!!, viewModelFactory)[AuthViewModel::class.java] }
     private val viewModel: AuthFragmentViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(AuthFragmentViewModel::class.java)
     }
@@ -63,14 +62,7 @@ class AuthFragment : Fragment() {
     }
 
     private fun startObservingLiveData() {
-        viewModel.userNameError.observe(viewLifecycleOwner, userNameErrorObserver)
-        viewModel.userEmailError.observe(viewLifecycleOwner, userEmailErrorObserver)
-        viewModel.passwordError.observe(viewLifecycleOwner, userPasswordErrorObserver)
-
-        viewModel.authButtonEnabled.observe(viewLifecycleOwner, loginButtonStatusObserver)
-
         viewModel.authProgress.observe(viewLifecycleOwner, loginProgressObserver)
-        viewModel.authSuccess.observe(viewLifecycleOwner, loginSuccessObserver)
         viewModel.authError.observe(viewLifecycleOwner, loginErrorObserver)
 
         viewModel.nameLayoutVisibilityLiveData.observe(viewLifecycleOwner, nameLayoutVisibilityObserver)
@@ -82,7 +74,7 @@ class AuthFragment : Fragment() {
     }
 
     private val focusedFieldObserver = Observer<AuthFormField> {
-        when(it) {
+        when (it) {
             AuthFormField.USER_NAME -> binding?.nameInputEditText?.requestFocus()
             AuthFormField.EMAIL -> binding?.emailInputEditText?.requestFocus()
             AuthFormField.PASSWORD -> binding?.passwordInputEditText?.requestFocus()
@@ -93,41 +85,22 @@ class AuthFragment : Fragment() {
         binding?.counterAuthButton?.setText(resource)
     }
 
-    private val authButtonActionObserver = Observer<Int> { resource->
+    private val authButtonActionObserver = Observer<Int> { resource ->
         binding?.authButton?.setText(resource)
     }
 
-    private val authLabelResourceObserver = Observer<Int> { resource->
+    private val authLabelResourceObserver = Observer<Int> { resource ->
         binding?.labelAuthTitle?.setText(resource)
     }
 
     private val nameLayoutVisibilityObserver = Observer<Boolean> { visibility ->
-        binding?.nameInputLayout?.isVisible = visibility }
+        binding?.nameInputLayout?.isVisible = visibility
+    }
 
     private fun startObservingTextChanges() {
         binding?.nameInputEditText?.doAfterTextChanged { viewModel.updateUserName(it.toString()) }
         binding?.emailInputEditText?.doAfterTextChanged { viewModel.updateUserEmail(it.toString()) }
         binding?.passwordInputEditText?.doAfterTextChanged { viewModel.updatePassword(it.toString()) }
-    }
-
-    private val loginButtonStatusObserver = Observer<Boolean> {
-        binding?.authButton?.isEnabled = it
-    }
-
-    private val userEmailErrorObserver = Observer<String?> {
-        binding?.emailInputLayout?.error = it
-    }
-
-    private val userNameErrorObserver = Observer<String?> {
-        binding?.nameInputLayout?.error = it
-    }
-
-    private val userPasswordErrorObserver = Observer<String?> {
-        binding?.passwordInputLayout?.error = it
-    }
-
-    private val loginSuccessObserver = Observer<Boolean> {
-        authViewModel.isAuthenticationDone.postValue(it)
     }
 
     private val loginErrorObserver = Observer<String> {
@@ -136,7 +109,7 @@ class AuthFragment : Fragment() {
 
     private val loginProgressObserver = Observer<Boolean> { show ->
         if (show) binding?.progress?.show() else binding?.progress?.hide()
-        binding?.authButton?.visibility = if(!show) View.VISIBLE else View.INVISIBLE
+        binding?.authButton?.visibility = if (!show) View.VISIBLE else View.INVISIBLE
         binding?.counterAuthButton?.isEnabled = !show
         binding?.emailInputLayout?.isEnabled = !show
         binding?.passwordInputLayout?.isEnabled = !show
